@@ -3,7 +3,7 @@ dataset_recorder:
     # Both cameras are expected to run at 30 FPS over USB 3.
     recording_rate_hz: 20.0
     # Relative paths resolve from the central repository root.
-    output_root: "data/ur5_vla_dataset"
+    output_root: "data/dataset"
 
     base_image_topic: "/base/camera/color/image_raw"
     wrist_image_topic: "/wrist/camera/color/image_raw"

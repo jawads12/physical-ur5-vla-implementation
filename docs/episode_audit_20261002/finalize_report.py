@@ -7,7 +7,7 @@ full={r['episode']:r for r in json.loads((P/'full_media_report.json').read_text(
 assert len(struct)==39 and set(full)=={r['episode'] for r in struct},'Full media checks are not yet complete'
 accepted=[r for r in struct if r['structural_pass'] and not r['review_notes'] and full[r['episode']]['full_media_pass']]
 rejected=[r for r in struct if r not in accepted]
-old=json.loads((PROJECT/'data/ur5_vla_dataset/lerobot/ur5_cube_clean_73ep_v2/meta/ur5_vla_conversion.json').read_text())['source_episode_names']
+old=json.loads((PROJECT/'data/dataset/lerobot/ur5_cube_clean_73ep_v2/meta/ur5_vla_conversion.json').read_text())['source_episode_names']
 (P/'accepted_new_episodes.txt').write_text('\n'.join(r['episode'] for r in accepted)+'\n')
 (P/'combined_episodes.txt').write_text('\n'.join(old+[r['episode'] for r in accepted])+'\n')
 frames=sum(r['frames'] for r in accepted)
@@ -21,7 +21,7 @@ with (P/'episode_summary.csv').open('w') as f:
   w.writerow(row)
 text=f'''# New episode audit — 2 October 2026
 
-Raw input: `{PROJECT/'data/ur5_vla_dataset/staging/episodes'}`.
+Raw input: `{PROJECT/'data/dataset/staging/episodes'}`.
 Baseline: `ur5_cube_clean_73ep_v2/meta/ur5_vla_conversion.json`.
 
 Found **39 new finalized episodes / {summary['new_frames']:,} frames**. There are 112 finalized episodes in total, including all original 73. No incomplete folders were found at inspection.

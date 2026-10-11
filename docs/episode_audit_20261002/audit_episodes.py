@@ -6,9 +6,9 @@ PROJECT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(PROJECT/'ros2_ws/src/ur5-vla-dataset-recorder'))
 from ur5_vla_dataset_recorder.raw_dataset import validate_raw_episode
 from ur5_vla_dataset_recorder.standard_pose_node import STANDARD_POSE_RAD
-ROOT=PROJECT/'data/ur5_vla_dataset/staging/episodes'
+ROOT=PROJECT/'data/dataset/staging/episodes'
 OUT=Path(__file__).resolve().parent
-BASE=PROJECT/'data/ur5_vla_dataset/lerobot/ur5_cube_clean_73ep_v2/meta/ur5_vla_conversion.json'
+BASE=PROJECT/'data/dataset/lerobot/ur5_cube_clean_73ep_v2/meta/ur5_vla_conversion.json'
 TASK='Pick up the orange cube and place it in the bowl'
 
 def structural(name):

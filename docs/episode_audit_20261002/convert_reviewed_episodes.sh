@@ -4,7 +4,7 @@ set -euo pipefail
 UR5_AUDIT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 UR5_PROJECT_ROOT=$(cd "$UR5_AUDIT_DIR/../.." && pwd)
 UR5_REPO="$UR5_PROJECT_ROOT/ros2_ws/src/ur5-vla-dataset-recorder"
-UR5_RAW_ROOT="$UR5_PROJECT_ROOT/data/ur5_vla_dataset/staging/episodes"
+UR5_RAW_ROOT="$UR5_PROJECT_ROOT/data/dataset/staging/episodes"
 
 case "${1:---help}" in
   new)
@@ -38,7 +38,7 @@ fi
 for UR5_EPISODE in "${UR5_EPISODES[@]}"; do
   [[ "$UR5_EPISODE" =~ ^episode_[0-9]{8}_[0-9]{6}$ ]] || { echo 'Invalid episode name.' >&2; exit 1; }
 done
-UR5_OUTPUT_ROOT="$UR5_PROJECT_ROOT/data/ur5_vla_dataset/lerobot/$UR5_DATASET_NAME"
+UR5_OUTPUT_ROOT="$UR5_PROJECT_ROOT/data/dataset/lerobot/$UR5_DATASET_NAME"
 if [[ -e "$UR5_OUTPUT_ROOT" ]]; then
   echo "Output already exists; refusing overwrite: $UR5_OUTPUT_ROOT" >&2
   exit 1

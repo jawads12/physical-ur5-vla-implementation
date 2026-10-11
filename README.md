@@ -113,7 +113,8 @@ Six hardware workspace packages and the recorder package built successfully from
 | `notebooks/` | Four later SmolVLA and π0.5 Colab notebooks and troubleshooting copies |
 | `docs/episode_audit_20261002/` | Reviewed episode lists, audit code, contact sheets, and reports |
 | `docs/thesis_chapter/` | Canonical methodology chapter, builder, figures, PDF, DOCX, and evidence register |
-| `data/ur5_vla_dataset/` | Raw episodes, converted datasets, checkpoints, exports, evaluation, quarantine |
+| `data/dataset/` | Raw episodes (`staging/`), converted datasets (`lerobot/`), and quarantine |
+| `data/models/` | Trained checkpoints and evaluation results |
 | `data/huggingface_cache/` | Copied model/dataset Hub cache used by fresh terminals |
 | `data/hf_lerobot_cache/` | Copied LeRobot local dataset cache used by fresh terminals |
 | `legacy/desktop_vla/` | Earlier experiments, source code, simulation assets, and outputs |
@@ -135,15 +136,65 @@ The original project directories were copied, not moved. They are no longer sour
 
 ## Current data and model
 
-`data/ur5_vla_dataset/staging/episodes/` contains 112 finalized raw episode directories. `data/ur5_vla_dataset/lerobot/ur5_cube_110ep_v3/` is the reviewed 110-episode dataset: **285,204 frames at 20 Hz**. Its `meta/info.json`, `meta/stats.json`, `meta/tasks.parquet`, `data/`, and `videos/` form the LeRobot dataset; keep the folder intact. Other `lerobot/` children are earlier dataset versions and must be identified by exact folder name when reporting results.
+The `data/` layout below was verified on 2026-10-11. Paths are relative to
+the repository root; episode media and checkpoint internals are omitted from
+the tree for readability.
+
+```text
+data/
+├── dataset/
+│   ├── staging/
+│   │   ├── episodes/                         # 112 finalized raw episodes
+│   │   └── clean_20_cube_raw_nonconverted/   # Separate raw selection
+│   ├── quarantine/
+│   │   ├── invalid_episodes_2026-08-25/
+│   │   └── partial_conversions/
+│   └── lerobot/
+│       ├── ur5_cube_110ep_v3/
+│       ├── ur5_cube_30ep/
+│       ├── ur5_cube_clean_20ep/
+│       ├── ur5_cube_clean_20ep_delta/
+│       ├── ur5_cube_clean_53ep/
+│       ├── ur5_cube_clean_73ep_v2/
+│       └── ur5_orange_cube_v1/
+├── models/
+│   ├── checkpoints/
+│   │   └── ur5_cube_110ep_v3_smolvla_a100_b128_18000_steps_20261003_180950/
+│   └── evaluation/                         # Empty after cleanup
+├── hf_lerobot_cache/
+│   ├── lerobot/
+│   └── local/
+└── huggingface_cache/
+    ├── datasets/
+    └── hub/
+```
+
+| Folder | Purpose and contents |
+| --- | --- |
+| `data/dataset/staging/` | Original demonstrations before conversion. Episodes contain `frames.jsonl`, `metadata.yaml`, base/wrist RGB images, and depth when recorded. Active or unfinished recorder episodes use hidden `.incomplete` directories. The separate `clean_20_cube_raw_nonconverted/` selection is retained. |
+| `data/dataset/quarantine/` | Preserved invalid recordings and interrupted conversion outputs, kept separate from the selected training datasets. |
+| `data/dataset/lerobot/` | Converted, versioned training datasets. Each dataset keeps its metadata, frame data, and camera media together. Absolute and delta action datasets are distinct versions. |
+| `data/models/checkpoints/` | Trained policy weights, model/training configuration, preprocessing and postprocessing assets, intermediate checkpoints, training logs, metrics, environment records, and checksum records. |
+| `data/models/evaluation/` | Destination for future prediction CSVs, evaluation reports, and test logs. All previous contents were deleted on 2026-10-11; the directory remains empty. |
+| `data/hf_lerobot_cache/` | LeRobot local dataset cache selected by `HF_LEROBOT_HOME`. |
+| `data/huggingface_cache/` | Hugging Face model and dataset download caches selected by `HF_HOME`. |
+
+`data/dataset/` contains only `staging/`, `quarantine/`, and `lerobot/`.
+`data/models/` contains only `checkpoints/` and `evaluation/`. The previous
+`data/ur5_vla_dataset/` name has been replaced, and its `exports/` folder was
+deleted. Dataset and checkpoint contents were preserved during the directory
+reorganization; evaluation contents were intentionally removed. The recorder
+and model-check script use the new paths.
+
+`data/dataset/staging/episodes/` contains 112 finalized raw episode directories. `data/dataset/lerobot/ur5_cube_110ep_v3/` is the reviewed 110-episode dataset: **285,204 frames at 20 Hz**. Its `meta/info.json`, `meta/stats.json`, `meta/tasks.parquet`, `data/`, and `videos/` form the LeRobot dataset; keep the folder intact. Other `lerobot/` children are earlier dataset versions and must be identified by exact folder name when reporting results.
 
 The final 18,000-step SmolVLA checkpoint is:
 
 ```text
-data/ur5_vla_dataset/checkpoints/ur5_cube_110ep_v3_smolvla_a100_b128_18000_steps_20261003_180950/pretrained_model/
+data/models/checkpoints/ur5_cube_110ep_v3_smolvla_a100_b128_18000_steps_20261003_180950/pretrained_model/
 ```
 
-It contains `model.safetensors`, `config.json`, the training config, and policy pre/postprocessor files. `data/ur5_vla_dataset/evaluation/` holds saved offline reports, including `smolvla_110ep_18000/new_repo_gpu_smoke.csv` and its JSON report from a one-frame GPU check. `exports/` contains packaged datasets; `quarantine/` contains rejected or interrupted material; `staging/` contains raw recording material. Do not silently mix those categories when training.
+It contains `model.safetensors`, `config.json`, the training config, and policy pre/postprocessor files. `data/models/evaluation/` is currently empty after the requested cleanup; future model checks write their reports there. `data/dataset/quarantine/` contains rejected or interrupted material; `data/dataset/staging/` contains raw recording material. The former `exports/` folder was deleted. Do not silently mix those categories when training.
 
 Converted dataset folders currently include `ur5_cube_30ep`,
 `ur5_cube_clean_20ep`, `ur5_cube_clean_20ep_delta`,
@@ -155,7 +206,7 @@ directories contain `frames.jsonl`, metadata, and referenced camera media;
 the README describes them by schema and dataset version rather than listing
 all 1.4 million files individually.
 
-The main raw/converted data copy completed with **1,427,363 files** in both source and destination trees and an rsync dry run showing zero differences. The copied hardware source, later checkpoint archive, LeRobot cache, and Hugging Face Hub/datasets caches also showed zero differences. The project data is about 139 GB, with roughly another 32 GB of copied caches and more than 110 GB of older experiments/checkpoints. These large folders are ignored by Git: **a normal Git push does not upload datasets or model weights**.
+At the original migration, the main raw/converted data copy completed with **1,427,363 files** in both source and destination trees and an rsync dry run showing zero differences. The copied hardware source, later checkpoint archive, LeRobot cache, and Hugging Face Hub/datasets caches also showed zero differences. Migration-time size estimates were about 139 GB of project data, roughly another 32 GB of copied caches, and more than 110 GB of older experiments/checkpoints; these are historical estimates before the exports/evaluation cleanup. These large folders are ignored by Git: **a normal Git push does not upload datasets or model weights**.
 
 ## ROS package files
 
@@ -174,7 +225,7 @@ The installed console commands are defined in `ros2_ws/src/ur5-vla-dataset-recor
 | `policy_live_executor.py`, `policy_episode_executor.py` | Live policy execution and bounded episode execution; these can command hardware |
 | `package_dataset.py`, `split_archive.py`, `install_checkpoint.py` | Dataset archive and checkpoint transport utilities |
 
-`launch/recorder.launch.py` loads `config/recorder.yaml`. The recorder config uses `data/ur5_vla_dataset` relative to this repository, and the recorder resolves relative `output_root` values from the repository root. `test/` contains package checks. `tools/` contains notebook generators for the 30-, 20-, 53-, 73-, and 110-episode experiments, generic conversion-notebook generators, and a historical training progress monitor. That monitor uses the copied `legacy/downloaded_models/Checkpoints/` path and an old process ID; it is not a live monitor for a new run.
+`launch/recorder.launch.py` loads `config/recorder.yaml`. The recorder config uses `data/dataset` relative to this repository, and the recorder resolves relative `output_root` values from the repository root. `test/` contains package checks. `tools/` contains notebook generators for the 30-, 20-, 53-, 73-, and 110-episode experiments, generic conversion-notebook generators, and a historical training progress monitor. That monitor uses the copied `legacy/downloaded_models/Checkpoints/` path and an old process ID; it is not a live monitor for a new run.
 
 The package's `notebooks/` contains conversion notebooks and SmolVLA/π0/π0.5 training notebooks for named dataset versions. Colab notebooks intentionally use `/content` and Google Drive paths because they execute in Colab. `notebooks/` at repository root contains four later 110-episode training and π0.5 troubleshooting notebooks. All 17 package/root notebook files parsed as JSON; cloud training was not rerun during this migration.
 
@@ -211,6 +262,29 @@ notebook handoff note; this root README remains the current path guide.
 
 ## Standalone scripts
 
+Some filenames resemble ROS package modules, but they are distinct programs,
+not duplicate copies. The files under `ros2_ws/src/ur5-vla-dataset-recorder/`
+are installed by `colcon` and invoked with `ros2 run`; they share tested
+package helpers and accept explicit artifact paths. In particular,
+`ros2 run ur5_vla_dataset_recorder policy_executor` is a **shadow-only**
+inference client and rejects `--live`. The package's
+`policy_live_executor` and `policy_episode_executor` are separate guarded
+programs; the latter defaults to shadow mode.
+
+The root `scripts/` folder preserves standalone deployment and experiment
+entrypoints from the earlier `bypass` workflow. `scripts/policy_executor.py`
+selects a specific downloaded checkpoint, starts the inference server, and
+publishes seven abstract actions on `/control_abstraction_layer` for the
+separate `control_engine.py` to consume. It imports observation/protocol
+helpers from the ROS package; it is not the same code as the package's
+shadow-only `policy_executor.py`. `scripts/policy_executor_phased.py` is an
+earlier phase-aware variant. `scripts/episode_executor.py` replays saved
+actions to the abstraction topic, whereas the package's
+`policy_episode_executor.py` executes new policy predictions with explicit
+shadow/physical modes. Keep these roles distinct when choosing a command;
+the standalone scripts can cause physical motion when paired with the live
+control engine.
+
 | File in `scripts/` | Purpose and status |
 | --- | --- |
 | `project_paths.py` | Derives the repository, package, data, downloaded-model, and cache paths; gives model-server subprocesses a clean project environment |
@@ -232,7 +306,7 @@ The copied live scripts import the ROS package from this repository's source tre
 ros2 pkg prefix ur5_vla_dataset_recorder
 bash "$UR5_VLA_ROOT/scripts/test_110ep_model.sh" --help
 bash "$UR5_VLA_ROOT/scripts/test_110ep_model.sh" offline
-cat "$UR5_VLA_ROOT/data/ur5_vla_dataset/lerobot/ur5_cube_110ep_v3/meta/info.json"
+cat "$UR5_VLA_ROOT/data/dataset/lerobot/ur5_cube_110ep_v3/meta/info.json"
 ```
 
 Recording is launched with `ros2 launch ur5_vla_dataset_recorder recorder.launch.py` after the robot and cameras are ready. Its output goes to the repository data folder. The live control and policy scripts above can move the robot; they were **imported and syntax-checked**, not executed on hardware during this migration.

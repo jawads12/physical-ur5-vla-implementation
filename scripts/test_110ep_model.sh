@@ -3,9 +3,9 @@
 set -eo pipefail
 project_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 repo="$project_root/ros2_ws/src/ur5-vla-dataset-recorder"
-checkpoint="$project_root/data/ur5_vla_dataset/checkpoints/ur5_cube_110ep_v3_smolvla_a100_b128_18000_steps_20261003_180950/pretrained_model"
-dataset="$project_root/data/ur5_vla_dataset/lerobot/ur5_cube_110ep_v3"
-reports="$project_root/data/ur5_vla_dataset/evaluation/smolvla_110ep_18000"
+checkpoint="$project_root/data/models/checkpoints/ur5_cube_110ep_v3_smolvla_a100_b128_18000_steps_20261003_180950/pretrained_model"
+dataset="$project_root/data/dataset/lerobot/ur5_cube_110ep_v3"
+reports="$project_root/data/models/evaluation/smolvla_110ep_18000"
 conda_exe=/home/grasplab/miniconda3/bin/conda
 mode=${1:-help}
 cd "$repo"

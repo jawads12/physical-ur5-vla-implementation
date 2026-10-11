@@ -18,7 +18,8 @@ PROJECT = ROOT.parents[1]
 FIG = ROOT / 'figures'
 FIG.mkdir(exist_ok=True)
 REPO = PROJECT / 'ros2_ws/src/ur5-vla-dataset-recorder'
-DATA = PROJECT / 'data/ur5_vla_dataset'
+DATA = PROJECT / 'data/dataset'
+MODELS = PROJECT / 'data/models'
 OLD = PROJECT / 'legacy/downloaded_models/drive-download-20260823T063551Z-1-001'
 MODEL = PROJECT / 'legacy/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model'
 
@@ -96,7 +97,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 reports = []
-for path in sorted((DATA / 'evaluation/53ep_checkpoint_comparison').glob('*.json')):
+for path in sorted((MODELS / 'evaluation/53ep_checkpoint_comparison').glob('*.json')):
     d = json.loads(path.read_text())
     reports.append(dict(steps=int(path.stem), samples=d['samples'],
         mean_action_error=d['predicted_vs_demonstrated_action_error_rad']['mean'],
@@ -135,7 +136,7 @@ groups = {
 'E9': [REPO/'docs/LIVE_ONE_SHOT_EXECUTION.md', REPO/'docs/PHASED_DEPLOYMENT.md'],
 'E10': sorted((PROJECT/'scripts').glob('*.py')),
 'E11': [OLD/'offline_validation/report_100_frames.json', OLD/'offline_validation/actions_100_frames.csv'],
-'E12': sorted((DATA/'evaluation/53ep_checkpoint_comparison').glob('*.json')) + [REPO/'ur5_vla_dataset_recorder/offline_inference.py'],
+'E12': sorted((MODELS/'evaluation/53ep_checkpoint_comparison').glob('*.json')) + [REPO/'ur5_vla_dataset_recorder/offline_inference.py'],
 'E13': [REPO/'ur5_vla_dataset_recorder/action_semantics.py', DATA/'lerobot/ur5_cube_clean_20ep_delta/delta_integrity_report.json'],
 'E14': [REPO/'tools/generate_pi0_73ep_a100_colab.py']
 }

@@ -34,7 +34,7 @@ from .episode_writer import EpisodeWriter
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
-DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "data" / "ur5_vla_dataset"
+DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "data" / "dataset"
 
 
 def utc_now() -> str:

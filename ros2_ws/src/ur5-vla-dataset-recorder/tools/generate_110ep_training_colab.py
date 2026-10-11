@@ -5,7 +5,7 @@ import hashlib,json
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'notebooks/train_ur5_cube_clean_73ep_v2_smolvla_a100_autotuned_colab.ipynb'
 OUTPUT=ROOT/'notebooks/train_ur5_cube_110ep_v3_smolvla_a100_colab.ipynb'
-DATA=ROOT.parents[2]/'data/ur5_vla_dataset/lerobot/ur5_cube_110ep_v3'
+DATA=ROOT.parents[2]/'data/dataset/lerobot/ur5_cube_110ep_v3'
 notebook=json.loads(BASE.read_text())
 
 def put(index,text):
