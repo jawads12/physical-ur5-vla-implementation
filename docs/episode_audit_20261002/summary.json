@@ -1,0 +1,20 @@
+{
+  "new_episodes": 39,
+  "new_frames": 92290,
+  "selected_new_episodes": 37,
+  "selected_new_frames": 88497,
+  "full_media_files_checked": 369160,
+  "combined_with_original_73_episodes": 110,
+  "combined_frames": 285204,
+  "excluded_new": {
+    "episode_20261001_175654": [
+      "1 frame interval(s) exceed 0.20s; largest is 0.200162s between frames 231 and 232"
+    ],
+    "episode_20261001_182413": [
+      "no gripper close transition",
+      "no gripper open transition",
+      "not a single open-close-open sequence"
+    ]
+  },
+  "historical_advisory": "Original episode_20260829_200428 has four gripper transitions. combined_episodes.txt preserves all original 73; a stricter single-attempt variant can exclude it explicitly. Original episodes were not fully revalidated in this audit; converter preflight revalidates any selected originals."
+}

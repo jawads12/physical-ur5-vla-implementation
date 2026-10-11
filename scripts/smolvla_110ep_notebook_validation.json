@@ -1,0 +1,10 @@
+{
+  "episodes": 110,
+  "frames": 285204,
+  "fps": 20,
+  "task": "Pick up the orange cube and place it in the bowl",
+  "paired_video_samples": 330,
+  "action_mode": "absolute",
+  "validation": "PASS",
+  "held_out_split": false
+}

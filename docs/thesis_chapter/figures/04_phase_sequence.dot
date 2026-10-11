@@ -1,0 +1,36 @@
+digraph phases {
+
+graph [bgcolor="white", pad="0.25", nodesep="0.3", ranksep="0.45", dpi=180];
+node [shape=box, style="rounded,filled", fillcolor="#edf3f9", color="#345878", fontname="DejaVu Sans", fontsize=12, margin="0.16,0.12"];
+edge [color="#52677b", fontname="DejaVu Sans", fontsize=10, arrowsize=0.75];
+
+rankdir=TB;
+approach [label="APPROACH
+Gripper remains open"];
+close [label="Closing request pending
+Hold measured joint target", fillcolor="#fff0d8"];
+carry [label="CARRY
+Gripper remains closed"];
+open [label="Opening request pending
+Hold measured joint target", fillcolor="#fff0d8"];
+released [label="RELEASED
+Wait 2 seconds"];
+complete [label="COMPLETE
+End of release sequence
+Object outcome requires observation", fillcolor="#e7f3ea"];
+fault [label="FAULT
+Clear queued actions
+Stop executor publication", fillcolor="#f7e7e7"];
+approach -> close [label="3 matching predictions
++ demonstrated closing-region check"];
+close -> carry [label="matching I/O acknowledgment
++ ≥1 second settling"];
+carry -> open [label="3 matching predictions
++ demonstrated opening-region check"];
+open -> released [label="matching I/O acknowledgment
++ ≥1 second settling"];
+released -> complete;
+approach -> fault [style=dashed, label="prediction / runtime fault"];
+carry -> fault [style=dashed];
+{rank=same; carry; fault;}
+}

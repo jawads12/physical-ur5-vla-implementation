@@ -1,0 +1,36 @@
+digraph control {
+
+graph [bgcolor="white", pad="0.25", nodesep="0.3", ranksep="0.45", dpi=180];
+node [shape=box, style="rounded,filled", fillcolor="#edf3f9", color="#345878", fontname="DejaVu Sans", fontsize=12, margin="0.16,0.12"];
+edge [color="#52677b", fontname="DejaVu Sans", fontsize=10, arrowsize=0.75];
+
+rankdir=TB;
+sensors [label="ROS observation process
+Base/wrist RGB + joints + estimated gripper"];
+model [label="Separate model process
+SmolVLA checkpoint → 50 × 7 actions"];
+executor [label="Phased executor
+Select ≤5 actions; validate; replace queue
+Nominal publication: 20 Hz", fillcolor="#fff0d8"];
+refs [label="Demonstration references
+Approach / carry / release locations"];
+topic [label="/control_abstraction_layer
+Six absolute joints + binary gripper"];
+engine [label="Control engine
+Target checks + filtering
+Velocity/acceleration limits"];
+arm [label="125 Hz arm commands
+Forward position controller → UR5"];
+io [label="Discrete gripper SetIO
+Two sequential writes"];
+ack [label="Acknowledged I/O state
+Not measured grasp success", fillcolor="#e7f3ea"];
+sensors -> model [label="localhost request"];
+model -> executor [label="prediction"];
+refs -> executor;
+executor -> topic -> engine;
+engine -> arm;
+engine -> io -> ack;
+ack -> sensors [style=dashed, constraint=false];
+{rank=same; arm; io;}
+}

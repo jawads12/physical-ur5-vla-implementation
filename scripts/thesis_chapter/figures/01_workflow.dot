@@ -1,0 +1,28 @@
+digraph workflow {
+
+graph [bgcolor="white", pad="0.25", nodesep="0.3", ranksep="0.45", dpi=180];
+node [shape=box, style="rounded,filled", fillcolor="#edf3f9", color="#345878", fontname="DejaVu Sans", fontsize=12, margin="0.16,0.12"];
+edge [color="#52677b", fontname="DejaVu Sans", fontsize=10, arrowsize=0.75];
+
+rankdir=TB;
+human [label="Human demonstration
+Joystick → MoveIt Servo → UR5"];
+inputs [label="Two RGB views + aligned depth
+Measured joints + gripper estimate
+Final controller targets + language"];
+raw [label="20 Hz raw episode recorder
+Frames, media, timing, metadata"];
+gate [label="Structural + timing + behavior checks", fillcolor="#fff0d8"];
+exclude [label="Document exclusions
+Preserve source records", fillcolor="#f7e7e7"];
+convert [label="Versioned LeRobot dataset
+RGB video + 7D state/action + task"];
+train [label="Training and checkpoint preservation
+Weights + configuration + processors"];
+evaluate [label="Offline comparison → live shadow checks", fillcolor="#e7f3ea"];
+future [label="Physical experiment protocol and trial records
+Task outcomes, timing, interventions", style="rounded,dashed", fillcolor="white"];
+human -> inputs -> raw -> gate -> convert -> train -> evaluate -> future;
+gate -> exclude [label="reject"];
+{rank=same; gate; exclude;}
+}

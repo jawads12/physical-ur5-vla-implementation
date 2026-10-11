@@ -1,0 +1,319 @@
+[
+  {
+    "episode": "episode_20261001_174411",
+    "full_media_pass": true,
+    "frames": 2244,
+    "errors": [],
+    "warnings": [],
+    "seconds": 36.03
+  },
+  {
+    "episode": "episode_20261001_174702",
+    "full_media_pass": true,
+    "frames": 2960,
+    "errors": [],
+    "warnings": [],
+    "seconds": 46.85
+  },
+  {
+    "episode": "episode_20261001_175013",
+    "full_media_pass": true,
+    "frames": 2968,
+    "errors": [],
+    "warnings": [],
+    "seconds": 45.15
+  },
+  {
+    "episode": "episode_20261001_175654",
+    "full_media_pass": false,
+    "frames": 3195,
+    "errors": [
+      "1 frame interval(s) exceed 0.20s; largest is 0.200162s between frames 231 and 232"
+    ],
+    "warnings": [],
+    "seconds": 49.68
+  },
+  {
+    "episode": "episode_20261001_180135",
+    "full_media_pass": true,
+    "frames": 3587,
+    "errors": [],
+    "warnings": [],
+    "seconds": 54.77
+  },
+  {
+    "episode": "episode_20261001_180521",
+    "full_media_pass": true,
+    "frames": 2983,
+    "errors": [],
+    "warnings": [],
+    "seconds": 44.98
+  },
+  {
+    "episode": "episode_20261001_180840",
+    "full_media_pass": true,
+    "frames": 2354,
+    "errors": [],
+    "warnings": [],
+    "seconds": 36.03
+  },
+  {
+    "episode": "episode_20261001_181559",
+    "full_media_pass": true,
+    "frames": 2964,
+    "errors": [],
+    "warnings": [],
+    "seconds": 44.41
+  },
+  {
+    "episode": "episode_20261001_182121",
+    "full_media_pass": true,
+    "frames": 2367,
+    "errors": [],
+    "warnings": [],
+    "seconds": 35.89
+  },
+  {
+    "episode": "episode_20261001_182413",
+    "full_media_pass": false,
+    "frames": 598,
+    "errors": [
+      "no gripper close transition",
+      "no gripper open transition"
+    ],
+    "warnings": [],
+    "seconds": 9.03
+  },
+  {
+    "episode": "episode_20261001_183117",
+    "full_media_pass": true,
+    "frames": 2193,
+    "errors": [],
+    "warnings": [],
+    "seconds": 32.45
+  },
+  {
+    "episode": "episode_20261001_183405",
+    "full_media_pass": true,
+    "frames": 2097,
+    "errors": [],
+    "warnings": [],
+    "seconds": 31.62
+  },
+  {
+    "episode": "episode_20261001_183937",
+    "full_media_pass": true,
+    "frames": 2220,
+    "errors": [],
+    "warnings": [],
+    "seconds": 33.56
+  },
+  {
+    "episode": "episode_20261001_200322",
+    "full_media_pass": true,
+    "frames": 2830,
+    "errors": [],
+    "warnings": [],
+    "seconds": 44.34
+  },
+  {
+    "episode": "episode_20261001_200630",
+    "full_media_pass": true,
+    "frames": 2392,
+    "errors": [],
+    "warnings": [],
+    "seconds": 35.76
+  },
+  {
+    "episode": "episode_20261001_200914",
+    "full_media_pass": true,
+    "frames": 2541,
+    "errors": [],
+    "warnings": [],
+    "seconds": 38.21
+  },
+  {
+    "episode": "episode_20261001_201235",
+    "full_media_pass": true,
+    "frames": 2303,
+    "errors": [],
+    "warnings": [],
+    "seconds": 35.33
+  },
+  {
+    "episode": "episode_20261001_202255",
+    "full_media_pass": true,
+    "frames": 1968,
+    "errors": [],
+    "warnings": [],
+    "seconds": 29.6
+  },
+  {
+    "episode": "episode_20261001_202633",
+    "full_media_pass": true,
+    "frames": 1961,
+    "errors": [],
+    "warnings": [],
+    "seconds": 29.34
+  },
+  {
+    "episode": "episode_20261001_203252",
+    "full_media_pass": true,
+    "frames": 2426,
+    "errors": [],
+    "warnings": [],
+    "seconds": 36.37
+  },
+  {
+    "episode": "episode_20261001_203612",
+    "full_media_pass": true,
+    "frames": 2532,
+    "errors": [],
+    "warnings": [],
+    "seconds": 38.18
+  },
+  {
+    "episode": "episode_20261001_203917",
+    "full_media_pass": true,
+    "frames": 1998,
+    "errors": [],
+    "warnings": [],
+    "seconds": 30.17
+  },
+  {
+    "episode": "episode_20261001_204222",
+    "full_media_pass": true,
+    "frames": 2404,
+    "errors": [],
+    "warnings": [],
+    "seconds": 36.81
+  },
+  {
+    "episode": "episode_20261001_204920",
+    "full_media_pass": true,
+    "frames": 3202,
+    "errors": [],
+    "warnings": [],
+    "seconds": 47.99
+  },
+  {
+    "episode": "episode_20261001_205254",
+    "full_media_pass": true,
+    "frames": 2232,
+    "errors": [],
+    "warnings": [],
+    "seconds": 34.53
+  },
+  {
+    "episode": "episode_20261001_205849",
+    "full_media_pass": true,
+    "frames": 2044,
+    "errors": [],
+    "warnings": [],
+    "seconds": 31.01
+  },
+  {
+    "episode": "episode_20261001_210349",
+    "full_media_pass": true,
+    "frames": 2692,
+    "errors": [],
+    "warnings": [],
+    "seconds": 41.53
+  },
+  {
+    "episode": "episode_20261001_210715",
+    "full_media_pass": true,
+    "frames": 2519,
+    "errors": [],
+    "warnings": [],
+    "seconds": 37.39
+  },
+  {
+    "episode": "episode_20261001_211027",
+    "full_media_pass": true,
+    "frames": 2664,
+    "errors": [],
+    "warnings": [],
+    "seconds": 39.71
+  },
+  {
+    "episode": "episode_20261001_211339",
+    "full_media_pass": true,
+    "frames": 2112,
+    "errors": [],
+    "warnings": [],
+    "seconds": 31.67
+  },
+  {
+    "episode": "episode_20261001_211625",
+    "full_media_pass": true,
+    "frames": 1960,
+    "errors": [],
+    "warnings": [],
+    "seconds": 29.87
+  },
+  {
+    "episode": "episode_20261001_212343",
+    "full_media_pass": true,
+    "frames": 2046,
+    "errors": [],
+    "warnings": [],
+    "seconds": 31.33
+  },
+  {
+    "episode": "episode_20261001_212708",
+    "full_media_pass": true,
+    "frames": 1910,
+    "errors": [],
+    "warnings": [],
+    "seconds": 29.1
+  },
+  {
+    "episode": "episode_20261001_212937",
+    "full_media_pass": true,
+    "frames": 2253,
+    "errors": [],
+    "warnings": [],
+    "seconds": 34.14
+  },
+  {
+    "episode": "episode_20261001_213256",
+    "full_media_pass": true,
+    "frames": 2310,
+    "errors": [],
+    "warnings": [],
+    "seconds": 35.94
+  },
+  {
+    "episode": "episode_20261001_213544",
+    "full_media_pass": true,
+    "frames": 2111,
+    "errors": [],
+    "warnings": [],
+    "seconds": 31.91
+  },
+  {
+    "episode": "episode_20261001_214541",
+    "full_media_pass": true,
+    "frames": 2269,
+    "errors": [],
+    "warnings": [],
+    "seconds": 34.43
+  },
+  {
+    "episode": "episode_20261001_215633",
+    "full_media_pass": true,
+    "frames": 2332,
+    "errors": [],
+    "warnings": [],
+    "seconds": 34.83
+  },
+  {
+    "episode": "episode_20261001_215926",
+    "full_media_pass": true,
+    "frames": 1549,
+    "errors": [],
+    "warnings": [],
+    "seconds": 23.61
+  }
+]

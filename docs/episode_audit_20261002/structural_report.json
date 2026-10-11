@@ -1,0 +1,1480 @@
+[
+  {
+    "episode": "episode_20261001_174411",
+    "frames": 2244,
+    "duration_s": 112.44982292,
+    "dropped_frames": 6,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 807,
+        "time_s": 40.50018129,
+        "to": 0
+      },
+      {
+        "frame": 2136,
+        "time_s": 107.100308764,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10005218599999921,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0036659190203263137,
+    "max_state_action_error_rad": 0.004735302840799704,
+    "start_pose_error_rad": 0.006353855172506154,
+    "camera_skew_p99_s": 0.0551772071,
+    "metadata_sha256": "de0de8e2154b638f70964a9524128abf27821228e9815fb368661d1456300da4",
+    "manifest_sha256": "1b4116d60281b541db5e34156ce426fc44758d55c5da72ec8114549a9e66c684",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.09934107800000191,
+      "wrist": 0.05290639199999969
+    }
+  },
+  {
+    "episode": "episode_20261001_174702",
+    "frames": 2960,
+    "duration_s": 148.49951908399999,
+    "dropped_frames": 11,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1033,
+        "time_s": 51.861629991,
+        "to": 0
+      },
+      {
+        "frame": 2828,
+        "time_s": 141.961558326,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.15025778100000764,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003835505372503878,
+    "max_state_action_error_rad": 0.003927593149943398,
+    "start_pose_error_rad": 0.0017976760631590594,
+    "camera_skew_p99_s": 0.055744331009999995,
+    "metadata_sha256": "1212be6dd711940582ef4608f3b7adde4ff74d5e1231cce4b7c5e9dc10cdd72a",
+    "manifest_sha256": "51022bc68bc99e5776572685e4e18e21cfdf3fc4c5a3703f1c14608859ea317d",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.051323592999999335,
+      "wrist": 0.05238681899999165
+    }
+  },
+  {
+    "episode": "episode_20261001_175013",
+    "frames": 2968,
+    "duration_s": 148.999985176,
+    "dropped_frames": 13,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1146,
+        "time_s": 57.58089817,
+        "to": 0
+      },
+      {
+        "frame": 2816,
+        "time_s": 141.481443373,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14994934099999568,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0033255405399179594,
+    "max_state_action_error_rad": 0.003929627179200423,
+    "start_pose_error_rad": 0.0018336772686033953,
+    "camera_skew_p99_s": 0.05640241442,
+    "metadata_sha256": "d569d616865d7c0928fd702acee38e637255a785e8dde36a36e76d7d2c9f42b7",
+    "manifest_sha256": "fe6d8f776e3909e70cb1d7ca79534b726f7d5ae47f4160e0907d1f03e9fd968e",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05146948499999837,
+      "wrist": 0.09890592400000742
+    }
+  },
+  {
+    "episode": "episode_20261001_175654",
+    "frames": 3195,
+    "duration_s": 160.499812292,
+    "dropped_frames": 17,
+    "structural_pass": false,
+    "errors": [
+      "1 frame interval(s) exceed 0.20s; largest is 0.200162s between frames 231 and 232"
+    ],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1703,
+        "time_s": 85.837093096,
+        "to": 0
+      },
+      {
+        "frame": 3090,
+        "time_s": 155.387188018,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.2001619950000002,
+    "gaps_over_0_2s": 1,
+    "max_action_step_rad": 0.004036470768859546,
+    "max_state_action_error_rad": 0.004771429383222114,
+    "start_pose_error_rad": 0.0018095969921141375,
+    "camera_skew_p99_s": 0.0579187257,
+    "metadata_sha256": "3c7dc30cb22ec7db2a9e853bc8f2f2f2b90290feac91ed8e6a1163f9135f2fe2",
+    "manifest_sha256": "00d02521433c889c515c415f3d5d147d9a9ebc1853676353276137607eecdc1f",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05155364700000575,
+      "wrist": 0.05372676999999726
+    }
+  },
+  {
+    "episode": "episode_20261001_180135",
+    "frames": 3587,
+    "duration_s": 179.750384745,
+    "dropped_frames": 9,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1267,
+        "time_s": 63.434604054,
+        "to": 0
+      },
+      {
+        "frame": 3497,
+        "time_s": 175.285129861,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10301500799999985,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003708806879826554,
+    "max_state_action_error_rad": 0.004541075776806958,
+    "start_pose_error_rad": 0.0018458366682165828,
+    "camera_skew_p99_s": 0.05898187003999997,
+    "metadata_sha256": "3ddb7358cd570a870fe5c9f2aa7f6c5f7b7b7072c74f9975948751010edaeda6",
+    "manifest_sha256": "2ae796b374ac934e03843f73e2e705fde2364f3b8332e738b888ee936caa0c08",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05122610800000871,
+      "wrist": 0.05179878999999943
+    }
+  },
+  {
+    "episode": "episode_20261001_180521",
+    "frames": 2983,
+    "duration_s": 149.44782585899998,
+    "dropped_frames": 7,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1571,
+        "time_s": 78.648262198,
+        "to": 0
+      },
+      {
+        "frame": 2890,
+        "time_s": 144.897965993,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10033617200002709,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.00333302954154302,
+    "max_state_action_error_rad": 0.004111019043787856,
+    "start_pose_error_rad": 0.0017497539287596453,
+    "camera_skew_p99_s": 0.059609804339999996,
+    "metadata_sha256": "d8ba1e5a29fe522aa1a80bcbe931d5648e27c08bd09105c876ede7b680e561d0",
+    "manifest_sha256": "5b69006d79b26438b77d869a8dd39b159dda0dd502255943925dbaeb28b7d7e2",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.0986670659999902,
+      "wrist": 0.05212569500000086
+    }
+  },
+  {
+    "episode": "episode_20261001_180840",
+    "frames": 2354,
+    "duration_s": 117.94992252,
+    "dropped_frames": 6,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1035,
+        "time_s": 51.806587344,
+        "to": 0
+      },
+      {
+        "frame": 2216,
+        "time_s": 111.105810725,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14994405499999175,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003392599943814023,
+    "max_state_action_error_rad": 0.004623174755065129,
+    "start_pose_error_rad": 0.0021343231595667006,
+    "camera_skew_p99_s": 0.06022736123,
+    "metadata_sha256": "4dc1fdd7cb9ac28def7e0e59f866ff0fe5dabceaee356d5075604dd4812e7ac3",
+    "manifest_sha256": "e4f7922e69226f389bbba2d808c8f1781f85ce45d9fbb8690ab3b0d679235911",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.051143327000005456,
+      "wrist": 0.05128741899999767
+    }
+  },
+  {
+    "episode": "episode_20261001_181559",
+    "frames": 2964,
+    "duration_s": 148.499904276,
+    "dropped_frames": 7,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1303,
+        "time_s": 65.305861759,
+        "to": 0
+      },
+      {
+        "frame": 2884,
+        "time_s": 144.556996881,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14996922399999946,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003504312059813053,
+    "max_state_action_error_rad": 0.003852979081813368,
+    "start_pose_error_rad": 0.002086162606588185,
+    "camera_skew_p99_s": 0.07176472155,
+    "metadata_sha256": "84244b65508d28abb0bcf94647216c31ec200205097979697888e0a411d5e4a9",
+    "manifest_sha256": "0d078aea646ffba6eef329f500dcf0b3058722173d4d9b9457abfab43d9b1dc5",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05149480399999984,
+      "wrist": 0.09825516999999984
+    }
+  },
+  {
+    "episode": "episode_20261001_182121",
+    "frames": 2367,
+    "duration_s": 119.199742658,
+    "dropped_frames": 18,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 906,
+        "time_s": 45.86703768,
+        "to": 0
+      },
+      {
+        "frame": 2306,
+        "time_s": 116.217677918,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.15043538900000009,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003809396504060203,
+    "max_state_action_error_rad": 0.003466678417743063,
+    "start_pose_error_rad": 0.0016660690595740046,
+    "camera_skew_p99_s": 0.07058064961999999,
+    "metadata_sha256": "0db7b90297752a68f163786813db2c6a22e6721bf0abe9b0ce7903909aeaa97f",
+    "manifest_sha256": "70d62b4bfdfc0c94a10eb7fe7bd19d4dcf499b4957cef06ac04bafce8c5e093b",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05144818600000001,
+      "wrist": 0.09871181400001205
+    }
+  },
+  {
+    "episode": "episode_20261001_182413",
+    "frames": 598,
+    "duration_s": 30.04979471,
+    "dropped_frames": 4,
+    "structural_pass": false,
+    "errors": [
+      "no gripper close transition",
+      "no gripper open transition"
+    ],
+    "warnings": [],
+    "review_notes": [
+      "not a single open-close-open sequence"
+    ],
+    "transitions": [],
+    "max_gap_s": 0.1000673799999987,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0030881394197739276,
+    "max_state_action_error_rad": 0.0038287567434138747,
+    "start_pose_error_rad": 0.0017385483182581069,
+    "camera_skew_p99_s": 0.07023583671,
+    "metadata_sha256": "bc0418b377b000096a7bff5f4395e5a8a8b32f7f7409319c435e118dcf0a0c29",
+    "manifest_sha256": "3d76b3bc5ed4c1e832773f4cb4d8e194951686050b772ca436dfc134235121fe",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05123121000000008,
+      "wrist": 0.09822822900000006
+    }
+  },
+  {
+    "episode": "episode_20261001_183117",
+    "frames": 2193,
+    "duration_s": 110.150408907,
+    "dropped_frames": 11,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 955,
+        "time_s": 48.133224937,
+        "to": 0
+      },
+      {
+        "frame": 2119,
+        "time_s": 106.532606149,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.150209947,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0032520135708820064,
+    "max_state_action_error_rad": 0.003325050220358783,
+    "start_pose_error_rad": 0.0015578269725828875,
+    "camera_skew_p99_s": 0.0685806152,
+    "metadata_sha256": "c517407d094ef2c3f2f0ebc629cb0e1922213a265d094bf82f894b5c9288ec6a",
+    "manifest_sha256": "9bfc33e10a065ca2add9b07d629032470a6ffcd7dde7fdc3837f7bf4f8ca8a2e",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.052234042000002034,
+      "wrist": 0.05170538000000047
+    }
+  },
+  {
+    "episode": "episode_20261001_183405",
+    "frames": 2097,
+    "duration_s": 105.349792981,
+    "dropped_frames": 11,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 811,
+        "time_s": 40.879437165,
+        "to": 0
+      },
+      {
+        "frame": 2025,
+        "time_s": 101.828880383,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14990932200000007,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0035613568712977717,
+    "max_state_action_error_rad": 0.003636078429583023,
+    "start_pose_error_rad": 0.001918315926900685,
+    "camera_skew_p99_s": 0.06809242172,
+    "metadata_sha256": "74726af737a969d6f46d038e13c09c20dacec906c0dbf64d6003f563e002e7a9",
+    "manifest_sha256": "058885f2e3ff51ece7edb3d593d2bb58ab415544ed4e39e1cb6ba0ed09c5fd9d",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.053215294999999996,
+      "wrist": 0.05363561399999961
+    }
+  },
+  {
+    "episode": "episode_20261001_183937",
+    "frames": 2220,
+    "duration_s": 111.30054469000001,
+    "dropped_frames": 7,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 957,
+        "time_s": 47.852461474,
+        "to": 0
+      },
+      {
+        "frame": 2149,
+        "time_s": 107.752601274,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.15077904099999984,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003429031590548526,
+    "max_state_action_error_rad": 0.003554560087934533,
+    "start_pose_error_rad": 0.0018095969921141375,
+    "camera_skew_p99_s": 0.06676220968,
+    "metadata_sha256": "50925c07b029cf57319dc6942d94c6b14bd8cd4a7e2749beca320f421bd0fdad",
+    "manifest_sha256": "dde0c5e3a7fa77430cd029f611c22f7eb40b7ad7393e2d734d7834cce6286495",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05215439799999899,
+      "wrist": 0.05149074700000256
+    }
+  },
+  {
+    "episode": "episode_20261001_200322",
+    "frames": 2830,
+    "duration_s": 141.899995625,
+    "dropped_frames": 9,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1366,
+        "time_s": 68.681356051,
+        "to": 0
+      },
+      {
+        "frame": 2730,
+        "time_s": 136.980864053,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.15053702199999996,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0033630818699545983,
+    "max_state_action_error_rad": 0.004654158929186303,
+    "start_pose_error_rad": 0.0017147064603479506,
+    "camera_skew_p99_s": 0.053420080019999996,
+    "metadata_sha256": "3225ff2f05676e45c8e8b6d10b15c50a54a7e52283d62cf497b7d3ff7318ebb0",
+    "manifest_sha256": "4f88ed1a94ebbaceba32dda175bed364198c52bc37fa25265c736f84888b43b5",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05116704900001423,
+      "wrist": 0.051657482999999615
+    }
+  },
+  {
+    "episode": "episode_20261001_200630",
+    "frames": 2392,
+    "duration_s": 120.249997805,
+    "dropped_frames": 14,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 992,
+        "time_s": 49.964898682,
+        "to": 0
+      },
+      {
+        "frame": 2325,
+        "time_s": 116.964720124,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14937280000000008,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.00373136266165508,
+    "max_state_action_error_rad": 0.004391868841882168,
+    "start_pose_error_rad": 0.0013182163005858172,
+    "camera_skew_p99_s": 0.053922638440000004,
+    "metadata_sha256": "1838d8b02a9dde879a168e7ec2b63a2e217193e2f94f377a121d8ebf253dc4e9",
+    "manifest_sha256": "bce92a088f6c26bbd0b4e914f7609cefff2bb7c4f85a9d4d9f0d21c43afc782b",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05113494700000132,
+      "wrist": 0.051286048999998
+    }
+  },
+  {
+    "episode": "episode_20261001_200914",
+    "frames": 2541,
+    "duration_s": 127.20018066,
+    "dropped_frames": 4,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1068,
+        "time_s": 53.488461674,
+        "to": 0
+      },
+      {
+        "frame": 2458,
+        "time_s": 123.138016733,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.1002567139999968,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003550100666684042,
+    "max_state_action_error_rad": 0.005757017448583923,
+    "start_pose_error_rad": 0.0013427734663122859,
+    "camera_skew_p99_s": 0.0546776368,
+    "metadata_sha256": "9411af1ba561f2d1886e1bf2b71e9110c19f5eeef0d0c587686c1fe055544d6f",
+    "manifest_sha256": "748c294b72d8e8647a23e75559d1b074ca550ba81ddbfcd8feed30f7ba17f4e6",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.051318707999996604,
+      "wrist": 0.05144256700000005
+    }
+  },
+  {
+    "episode": "episode_20261001_201235",
+    "frames": 2303,
+    "duration_s": 115.299172262,
+    "dropped_frames": 4,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 929,
+        "time_s": 46.451834561,
+        "to": 0
+      },
+      {
+        "frame": 2201,
+        "time_s": 110.251887753,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10018390899999474,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0037662143731154174,
+    "max_state_action_error_rad": 0.0032489046739025973,
+    "start_pose_error_rad": 0.0016660690595740046,
+    "camera_skew_p99_s": 0.05554919354,
+    "metadata_sha256": "efbe6c7fc7ce9ebcf37adaf0aa22c665132925d4f29b48f4d8b1c2d9145d233f",
+    "manifest_sha256": "01d28d6cbee5d63a09dda7d074dadb5c5f5f4d369deab6e48512ab14c7fc4d2b",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05151612199999889,
+      "wrist": 0.0517198669999992
+    }
+  },
+  {
+    "episode": "episode_20261001_202255",
+    "frames": 1968,
+    "duration_s": 98.599435669,
+    "dropped_frames": 5,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 861,
+        "time_s": 43.064663873,
+        "to": 0
+      },
+      {
+        "frame": 1850,
+        "time_s": 92.764530407,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10049938699999927,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0034221913939362913,
+    "max_state_action_error_rad": 0.0033486108984126517,
+    "start_pose_error_rad": 0.0014505386747034194,
+    "camera_skew_p99_s": 0.05756994631,
+    "metadata_sha256": "831c56a81dc9dcc0ad758c171007b59ed678a06e23f60f37ad0ebc86b1d8c956",
+    "manifest_sha256": "c5455871dacef5d10cb546143a8e348fc8bc09e27828d8c7169679eec7141175",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05221827999999107,
+      "wrist": 0.051163315000000154
+    }
+  },
+  {
+    "episode": "episode_20261001_202633",
+    "frames": 1961,
+    "duration_s": 98.3999817,
+    "dropped_frames": 8,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 807,
+        "time_s": 40.516976804,
+        "to": 0
+      },
+      {
+        "frame": 1898,
+        "time_s": 95.316536385,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10065999799999759,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0035823208945799934,
+    "max_state_action_error_rad": 0.004276211732726853,
+    "start_pose_error_rad": 0.0014505386747034194,
+    "camera_skew_p99_s": 0.058420458200000004,
+    "metadata_sha256": "50a540291933c9eafda06683c230dc4a48969813c467bf7523f67945845676f5",
+    "manifest_sha256": "641e0437d93ee7cc74e75114d97721b4ff2ae0dff4de0b542f004b474c3762f0",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.051330118999999286,
+      "wrist": 0.05136243700000165
+    }
+  },
+  {
+    "episode": "episode_20261001_203252",
+    "frames": 2426,
+    "duration_s": 121.50002858100001,
+    "dropped_frames": 5,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1075,
+        "time_s": 53.911714925,
+        "to": 0
+      },
+      {
+        "frame": 2367,
+        "time_s": 118.561747696,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10030142500000139,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003413495773238129,
+    "max_state_action_error_rad": 0.004411424183343948,
+    "start_pose_error_rad": 0.001666545907369435,
+    "camera_skew_p99_s": 0.07288372875,
+    "metadata_sha256": "028470e8953880381007a83381a0cbfe2210d5aacf4d294a9e7e13e4cbed1f76",
+    "manifest_sha256": "1091f24cff4de7241985c4224a32d6f4c1e7dd7e452f7741db709ea68a2cb842",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05151326399999334,
+      "wrist": 0.05204620100000312
+    }
+  },
+  {
+    "episode": "episode_20261001_203612",
+    "frames": 2532,
+    "duration_s": 126.64989334900001,
+    "dropped_frames": 2,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1051,
+        "time_s": 52.601242547,
+        "to": 0
+      },
+      {
+        "frame": 2464,
+        "time_s": 123.301191061,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.09983606999999495,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0032818282640487695,
+    "max_state_action_error_rad": 0.0037977532611344067,
+    "start_pose_error_rad": 0.002002239266744435,
+    "camera_skew_p99_s": 0.06078261972000001,
+    "metadata_sha256": "d44a2e40a4cfd6863320979cda361ca9c0d884cb9592d8a31239a188ccc1b856",
+    "manifest_sha256": "05d374d63ee9d255d37f26ababbb7c321cef36d3bb997b936d7b4bbffd9d3554",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05229272000000407,
+      "wrist": 0.05266608999999978
+    }
+  },
+  {
+    "episode": "episode_20261001_203917",
+    "frames": 1998,
+    "duration_s": 100.048533192,
+    "dropped_frames": 4,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 874,
+        "time_s": 43.778221026,
+        "to": 0
+      },
+      {
+        "frame": 1942,
+        "time_s": 97.32893844,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10221272800000492,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.00338263774487757,
+    "max_state_action_error_rad": 0.004472919887311022,
+    "start_pose_error_rad": 0.0016059875255614031,
+    "camera_skew_p99_s": 0.07216711824000001,
+    "metadata_sha256": "d692d9cfc0a11a464f953fa35f7fcfc85ae563bb1d39f0f29d1471ed865c643c",
+    "manifest_sha256": "3a895532205b5a8f97c4d11195fd9be9408637b809ddeb5991975dc76b1f41b7",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05241336400000307,
+      "wrist": 0.052017811999995445
+    }
+  },
+  {
+    "episode": "episode_20261001_204222",
+    "frames": 2404,
+    "duration_s": 120.599998541,
+    "dropped_frames": 9,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1039,
+        "time_s": 52.161428515,
+        "to": 0
+      },
+      {
+        "frame": 2346,
+        "time_s": 117.761320862,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10025998600000463,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003190875368974222,
+    "max_state_action_error_rad": 0.006072768634616477,
+    "start_pose_error_rad": 0.001474142051318239,
+    "camera_skew_p99_s": 0.07144069159999993,
+    "metadata_sha256": "25c387f58a5bdb9a4bdca72277282968bc24769eff068ee7220529c5354bd71e",
+    "manifest_sha256": "0e6922ab43313a78a9b0da520928a8cae358eb5d094c7dd503857dd959dd907b",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05171461700000002,
+      "wrist": 0.05160303600000038
+    }
+  },
+  {
+    "episode": "episode_20261001_204920",
+    "frames": 3202,
+    "duration_s": 160.750260004,
+    "dropped_frames": 14,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1683,
+        "time_s": 84.390531881,
+        "to": 0
+      },
+      {
+        "frame": 3114,
+        "time_s": 156.440549728,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14984002399999952,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003266807076053757,
+    "max_state_action_error_rad": 0.0048479637522240715,
+    "start_pose_error_rad": 0.001774311094486114,
+    "camera_skew_p99_s": 0.06995177460999999,
+    "metadata_sha256": "0019c38fa48d494aa14b49e400c88a00d3299186d142d07db7dc24c13859bcc8",
+    "manifest_sha256": "4aee7f89d81d067d55e2ea7bdb8645171adf312f0c4b445e72b8bf7130b42145",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05197761200000173,
+      "wrist": 0.09845272699999441
+    }
+  },
+  {
+    "episode": "episode_20261001_205254",
+    "frames": 2232,
+    "duration_s": 112.650014118,
+    "dropped_frames": 22,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1042,
+        "time_s": 52.676956843,
+        "to": 0
+      },
+      {
+        "frame": 2178,
+        "time_s": 110.027177591,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.19995480099998986,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.00427439343337177,
+    "max_state_action_error_rad": 0.004598139427571812,
+    "start_pose_error_rad": 0.0020623207380408015,
+    "camera_skew_p99_s": 0.06945011462,
+    "metadata_sha256": "79aca41bc502bc1275a8cae0bf22dc594c6ab115f26cb4890892f2bdeafd6d06",
+    "manifest_sha256": "dac3c866b19c0e0d1adfaa2dd33c26326a7f7566283900861f3a6459d2ba2b29",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05233692499999876,
+      "wrist": 0.05256704500000353
+    }
+  },
+  {
+    "episode": "episode_20261001_205849",
+    "frames": 2044,
+    "duration_s": 102.85004387400001,
+    "dropped_frames": 14,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 760,
+        "time_s": 38.49502308,
+        "to": 0
+      },
+      {
+        "frame": 1948,
+        "time_s": 98.145099768,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10093277499999687,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.00342484405482546,
+    "max_state_action_error_rad": 0.00337916646634584,
+    "start_pose_error_rad": 0.0017981529523962703,
+    "camera_skew_p99_s": 0.06811233155,
+    "metadata_sha256": "e6cda02d77f03d3a019b04436e74284b90f19113e6804024ae2a500649fffb4a",
+    "manifest_sha256": "5e8661933677c0cd873e3aa5494c5d695d86b6480bee160c224fa21f5960e6f1",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.099069520999997,
+      "wrist": 0.052103343
+    }
+  },
+  {
+    "episode": "episode_20261001_210349",
+    "frames": 2692,
+    "duration_s": 134.849028226,
+    "dropped_frames": 6,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1204,
+        "time_s": 60.337200185,
+        "to": 0
+      },
+      {
+        "frame": 2611,
+        "time_s": 130.887083196,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10043681499999835,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0037193920763431976,
+    "max_state_action_error_rad": 0.0037183437671890474,
+    "start_pose_error_rad": 0.0019533633953123797,
+    "camera_skew_p99_s": 0.06680435046,
+    "metadata_sha256": "2d50ef165676ecd72c08a1ae27a77b5982052d1db0e2b52d6d83ddb09f84f0d1",
+    "manifest_sha256": "7c5cbafae60976c5eaf051743b26357e76017dedc8202f8604de4c1f134035c6",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.051663679000000684,
+      "wrist": 0.051551139000000745
+    }
+  },
+  {
+    "episode": "episode_20261001_210715",
+    "frames": 2519,
+    "duration_s": 126.14998376199999,
+    "dropped_frames": 5,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1201,
+        "time_s": 60.164203182,
+        "to": 0
+      },
+      {
+        "frame": 2428,
+        "time_s": 121.664368377,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10034502400000633,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003470614848596121,
+    "max_state_action_error_rad": 0.005158254113755589,
+    "start_pose_error_rad": 0.0016539096599608172,
+    "camera_skew_p99_s": 0.06701143052000001,
+    "metadata_sha256": "618a2bf021ce1bf609525474b71ff5aec76915930f3099a21f1d072c859a2b37",
+    "manifest_sha256": "072dab0ece4ab2ce98c651c3e01b4e55c86b0175f814a11582571a8f1083a988",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.052293139999996185,
+      "wrist": 0.0513393859999951
+    }
+  },
+  {
+    "episode": "episode_20261001_211027",
+    "frames": 2664,
+    "duration_s": 133.350911379,
+    "dropped_frames": 4,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1280,
+        "time_s": 64.077980521,
+        "to": 0
+      },
+      {
+        "frame": 2597,
+        "time_s": 130.027519095,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.15050706499999933,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003187636005180128,
+    "max_state_action_error_rad": 0.0058291571828814615,
+    "start_pose_error_rad": 0.0016303062727087703,
+    "camera_skew_p99_s": 0.06585210737,
+    "metadata_sha256": "f333382043d45d3bc97b553c55b85e52f0d8e223b5aafa762a8a258af9c11446",
+    "manifest_sha256": "178c2f8457063586eb02742e66dbc0b2d433c2a2dab022315d5c2144c209a266",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.0989254219999971,
+      "wrist": 0.05182459100001324
+    }
+  },
+  {
+    "episode": "episode_20261001_211339",
+    "frames": 2112,
+    "duration_s": 105.749913868,
+    "dropped_frames": 4,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1070,
+        "time_s": 53.692420296,
+        "to": 0
+      },
+      {
+        "frame": 1989,
+        "time_s": 99.692154543,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.1005418519999921,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003660716650096596,
+    "max_state_action_error_rad": 0.005201250290984616,
+    "start_pose_error_rad": 0.001762390176168263,
+    "camera_skew_p99_s": 0.06492912858000001,
+    "metadata_sha256": "549045fc5bfcc47fd5e2f3bfbda2e0019d3d70ebd379c7be094fabcfa4d4d75f",
+    "manifest_sha256": "d07e681edd800bb9556deba3430ad88b020d9b7795478cddc5f30d717bbe0f4d",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05147560600000389,
+      "wrist": 0.05086658199999761
+    }
+  },
+  {
+    "episode": "episode_20261001_211625",
+    "frames": 1960,
+    "duration_s": 98.09998776799999,
+    "dropped_frames": 3,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 776,
+        "time_s": 38.840914506,
+        "to": 0
+      },
+      {
+        "frame": 1840,
+        "time_s": 92.190675422,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.15029003299999033,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003365407746898086,
+    "max_state_action_error_rad": 0.0039021138516139864,
+    "start_pose_error_rad": 0.001750469247213185,
+    "camera_skew_p99_s": 0.06428961675,
+    "metadata_sha256": "c6090003234e3204285bb5a970ca8858d0364283621fc9848e35a626be21ebcd",
+    "manifest_sha256": "946abe3db54b9485446152f90c097a256948dc6d47004dc2e712fe4af141a2e3",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05187981899999983,
+      "wrist": 0.05130473200000002
+    }
+  },
+  {
+    "episode": "episode_20261001_212343",
+    "frames": 2046,
+    "duration_s": 102.249827594,
+    "dropped_frames": 0,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 731,
+        "time_s": 36.597698104,
+        "to": 0
+      },
+      {
+        "frame": 1850,
+        "time_s": 92.54762651,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.05361381300000545,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0035930853827688125,
+    "max_state_action_error_rad": 0.00465781451261571,
+    "start_pose_error_rad": 0.0017027855313928725,
+    "camera_skew_p99_s": 0.06266763915,
+    "metadata_sha256": "4e04426c24a932b816b104d0f6e655a27967c8980aa20830c73c58292d2f2691",
+    "manifest_sha256": "6f365c0d9703539672955d98ed4da9a967257f8551713ad49647d32f43715c24",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05190105900000219,
+      "wrist": 0.05170309099999315
+    }
+  },
+  {
+    "episode": "episode_20261001_212708",
+    "frames": 1910,
+    "duration_s": 95.59916355,
+    "dropped_frames": 3,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 699,
+        "time_s": 35.02180143,
+        "to": 0
+      },
+      {
+        "frame": 1739,
+        "time_s": 87.121596644,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10055035999999973,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003239190205844178,
+    "max_state_action_error_rad": 0.004557883023401432,
+    "start_pose_error_rad": 0.0018455981975584734,
+    "camera_skew_p99_s": 0.06215574017000001,
+    "metadata_sha256": "7d06cad98f9b7186b4e0b8152b1a0d0268029c8d49829659411e656994762363",
+    "manifest_sha256": "f0fe6c01a750964e9e994e42d85d95dae762bfea4513e9e43fcd241eb905d269",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05155889899999977,
+      "wrist": 0.05115760500000022
+    }
+  },
+  {
+    "episode": "episode_20261001_212937",
+    "frames": 2253,
+    "duration_s": 112.79934266800001,
+    "dropped_frames": 4,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 947,
+        "time_s": 47.459236341,
+        "to": 0
+      },
+      {
+        "frame": 2179,
+        "time_s": 109.158901392,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10018064500000001,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0034580896681304374,
+    "max_state_action_error_rad": 0.0038931032202818017,
+    "start_pose_error_rad": 0.001918315926900685,
+    "camera_skew_p99_s": 0.06157836924000001,
+    "metadata_sha256": "9b9a122fdf929970878afe651360f0676e59e016537abdf88cc1a451bdb2a5c7",
+    "manifest_sha256": "160aa0de0c36bcf1af9190fde67f4c8b10e06b964b283d78c55e3098005abfcc",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.051525292,
+      "wrist": 0.05105030999999727
+    }
+  },
+  {
+    "episode": "episode_20261001_213256",
+    "frames": 2310,
+    "duration_s": 115.749455275,
+    "dropped_frames": 6,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 845,
+        "time_s": 42.436887881,
+        "to": 0
+      },
+      {
+        "frame": 2111,
+        "time_s": 105.886319558,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10098242699999815,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003226195882129801,
+    "max_state_action_error_rad": 0.003605392996592016,
+    "start_pose_error_rad": 0.0019421577848108412,
+    "camera_skew_p99_s": 0.06065836703,
+    "metadata_sha256": "cf497db7a8a6341da90e9b1ca9a460170a4cc0201491d81e6f6a868f7ebc6c9c",
+    "manifest_sha256": "e1978fb971c92695ead3a8ff625d50ace9adaf4474c97d523770dd067dfda266",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.0991702000000032,
+      "wrist": 0.05094455700000822
+    }
+  },
+  {
+    "episode": "episode_20261001_213544",
+    "frames": 2111,
+    "duration_s": 105.950138767,
+    "dropped_frames": 9,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 771,
+        "time_s": 38.897523836,
+        "to": 0
+      },
+      {
+        "frame": 2026,
+        "time_s": 101.746812743,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10030672999999979,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003684398132058897,
+    "max_state_action_error_rad": 0.004450798147890289,
+    "start_pose_error_rad": 0.0017497539287596453,
+    "camera_skew_p99_s": 0.06034267600000001,
+    "metadata_sha256": "029ab0121496c8755642987578c14fa34d63b2d8cf9d2734f7a6b5a69dfc2008",
+    "manifest_sha256": "ca0a1a289c3bfc31d7ec1c3ce1bd56bf2a3e99ce7cd7b7ac215f3cdf740d8977",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05203344400000276,
+      "wrist": 0.05113490499999784
+    }
+  },
+  {
+    "episode": "episode_20261001_214541",
+    "frames": 2269,
+    "duration_s": 113.750657922,
+    "dropped_frames": 7,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1005,
+        "time_s": 50.354754799,
+        "to": 0
+      },
+      {
+        "frame": 2220,
+        "time_s": 111.354789726,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.14979641300000424,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0037735045317346394,
+    "max_state_action_error_rad": 0.0051928059255326176,
+    "start_pose_error_rad": 0.0016298293834715594,
+    "camera_skew_p99_s": 0.05771718772,
+    "metadata_sha256": "33ce0fd5e5ede0601fdcb502d7cabba1b474210603efe78afc044b60814ff97b",
+    "manifest_sha256": "ff562e91a0aa5efa0973fbf97764545aef7f12df2148426859ae5afe0b8a6f1f",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05136167599999908,
+      "wrist": 0.051112093000000414
+    }
+  },
+  {
+    "episode": "episode_20261001_215633",
+    "frames": 2332,
+    "duration_s": 117.099667676,
+    "dropped_frames": 11,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 1081,
+        "time_s": 54.339860424,
+        "to": 0
+      },
+      {
+        "frame": 2246,
+        "time_s": 112.839687774,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10070711000000188,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.003123934372163184,
+    "max_state_action_error_rad": 0.004198673216590882,
+    "start_pose_error_rad": 0.0017137527233153094,
+    "camera_skew_p99_s": 0.0553016947,
+    "metadata_sha256": "f1cd2ef48d92176af0b7d21ad25c8c874a2a63c9953b19fdc4a3e978d0804a25",
+    "manifest_sha256": "e5a71ac2df93dedd228bbc64f5eabc4fad2dfbb87a7cbb87ddf446549eed4f69",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05193133299999886,
+      "wrist": 0.05080377999999541
+    }
+  },
+  {
+    "episode": "episode_20261001_215926",
+    "frames": 1549,
+    "duration_s": 77.749395149,
+    "dropped_frames": 7,
+    "structural_pass": true,
+    "errors": [],
+    "warnings": [],
+    "review_notes": [],
+    "transitions": [
+      {
+        "frame": 634,
+        "time_s": 31.805336001,
+        "to": 0
+      },
+      {
+        "frame": 1482,
+        "time_s": 74.454878375,
+        "to": 1
+      }
+    ],
+    "max_gap_s": 0.10092914100000172,
+    "gaps_over_0_2s": 0,
+    "max_action_step_rad": 0.0033890788230757085,
+    "max_state_action_error_rad": 0.0046540886655466185,
+    "start_pose_error_rad": 0.0021343231595667006,
+    "camera_skew_p99_s": 0.06754690407999962,
+    "metadata_sha256": "3a4dbf645342841b53e7f3059044e7f6b05854ff02151cc08776d26723d62bef",
+    "manifest_sha256": "48c79584c3c409ae7216235ac2f22667410dd117cced80c3e67b3ad5b187fc37",
+    "non_increasing_camera_timestamps": {
+      "base": 0,
+      "wrist": 0
+    },
+    "longest_unchanged_image_timestamp_s": {
+      "base": 0.05252549999999978,
+      "wrist": 0.050888267000000376
+    }
+  }
+]

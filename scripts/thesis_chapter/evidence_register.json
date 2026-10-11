@@ -1,0 +1,261 @@
+{
+  "inspection_date": "2026-09-30",
+  "evidence": {
+    "E1": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/PROJECT_CONTEXT.md",
+        "sha256": "4a6634dfabe5e53fe3d6bcf6b69c108e6e0a8686f2ba07511c90c593af0f8dd5"
+      }
+    ],
+    "E2": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/CODEX_HANDOFF_2026-08-23.md",
+        "sha256": "e597ace999b7a915ab0d3c0b6d4f54c910a95dc5960bcd3631e5b807e4ea6257"
+      }
+    ],
+    "E3": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/README.md",
+        "sha256": "1607651804a67a4feb58995469cbb878d02d8e7fbb9082a0f1ed09f343b4e070"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/config/recorder.yaml",
+        "sha256": "7cf62a1eebf3d84f48100d77caa87e2dfb787d01bc0441ab6fc21aba5d4b97cd"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/core.py",
+        "sha256": "fd4d5f0e36ca43668be25afb805fb85a0304cb4077c674a47155bb6bc3fc154a"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/recorder_node.py",
+        "sha256": "8d878b840d7e3b892c257b9a96ee4b9732a38798df3141c764b033fe9d129fa5"
+      }
+    ],
+    "E4": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/RAW_VALIDATION_RESULTS.md",
+        "sha256": "083be6bb104e1092a56eb391e85a96e6f398767bf21b03caf060306dc9497a31"
+      }
+    ],
+    "E5": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/config/ur5_cube_clean_20ep.json",
+        "sha256": "d99ba04f6bd052385295267714f1d7c12598841138f80e9464f8a4f95b915ba3"
+      }
+    ],
+    "E6": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_110ep_v3/meta/info.json",
+        "sha256": "de71d93083204c98babf100c8331061badae2df7aa1a3bf23de5e8deecfa4fdf"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_30ep/meta/info.json",
+        "sha256": "05085b3ca547798dffc02e8e7b7e2524cbcdeb4bc3a3df535a2fa441b5ae381e"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_20ep/meta/info.json",
+        "sha256": "b0cddf69c05becce5894f87a7031d8377b25ee7b493d5b21fd32600ed2aa0e74"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_20ep_delta/meta/info.json",
+        "sha256": "636c7c29c957766ae7b0d5d1f44e72e61be161a08abe20aa5aba190a34db8959"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_53ep/meta/info.json",
+        "sha256": "e969c9585f7cb5ee0330376d1fba10320e57451d0f7f3683ac0c0acee1f5af82"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_73ep_v2/meta/info.json",
+        "sha256": "0e4eeb7a15222927bd501d56a86650ce347a92e7fd53701ce62ef3b5f191c10b"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_orange_cube_v1/meta/info.json",
+        "sha256": "c572e81d644f6756b4a04dfd0a51778ebe1552295d61fdaaac665de02269961f"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_110ep_v3/meta/ur5_vla_conversion.json",
+        "sha256": "eda8704603a39667c9b540b966cb8efdfee54e8b7d2ab4f34765ca24de592d21"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_30ep/meta/ur5_vla_conversion.json",
+        "sha256": "c584267bfd1e42190d647183e0c69697caf162794789e3b1bd83ffda04c27413"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_20ep/meta/ur5_vla_conversion.json",
+        "sha256": "8cf1e82a634924d92a61bf98292422137859f8973ab044d577e6be2a5fc470f2"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_20ep_delta/meta/ur5_vla_conversion.json",
+        "sha256": "5ddeec99a28a76f5cb8eef6774c7ebce7b97165241557e7e978b702e6adacf24"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_53ep/meta/ur5_vla_conversion.json",
+        "sha256": "616af44c53e0b585519554cf1f54e2ef0c2266a68589ab3ae42e06bf75170aa4"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_73ep_v2/meta/ur5_vla_conversion.json",
+        "sha256": "6b26d78ff2b7a73e95d3f4b36ac1beb6fa8583283e5ab2fef2e69305669ee77f"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_orange_cube_v1/meta/ur5_vla_conversion.json",
+        "sha256": "4eb06c032d51a91941ba0980bfe0a8b04a52af15a49a9356f3863039d31fd846"
+      }
+    ],
+    "E7": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/PHYSICAL_UR5_TRAINING_RUNBOOK.md",
+        "sha256": "4f51454ba8a8e6f6a57cc83cce820b3c79770b05b44555686aa0eb1a7167275f"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/LEROBOT_PIPELINE.md",
+        "sha256": "e6e0b176c9d26097c894cddee2756cd112c68e1ed0fc164d181ced70725718ed"
+      }
+    ],
+    "E8": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model/train_config.json",
+        "sha256": "2e909b8e8ee65ee6737b9d30ebe4c7c6031105748f893b8e152067946f34f9b3"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model/config.json",
+        "sha256": "fc53cf9ab7ca2f50484b50bf2ab12fec00bdaa2a8349d8d58e4fb72f4f41de6e"
+      }
+    ],
+    "E9": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/LIVE_ONE_SHOT_EXECUTION.md",
+        "sha256": "c0acfd80a6fb2dfc9602f86ab683ba3f06b8f61d0fb2c24bed830930b9dda763"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/docs/PHASED_DEPLOYMENT.md",
+        "sha256": "8b24fc5a25a7f0aecf7d3d9fc97e6b81fec97184d9a8e342b07b25dd73d70a87"
+      }
+    ],
+    "E10": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/control_engine.py",
+        "sha256": "a8447d33d29bec5ff6ad8d11335811fbf2c8f2dc8c837cb7f0838cae7be1537a"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/control_engine_phased.py",
+        "sha256": "2534617dc696eddadb642c2448f15efbdee3d12ba3160b25c1c35099f0d401ee"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/episode_executor.py",
+        "sha256": "d7e4346d3057037f3849ca9e55aa462547100a7171b86ed7f396a97237ba1bf0"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/policy_executor.py",
+        "sha256": "f45fc3c93782de32b874c8f4ef5427b144c077a25954c506c0f08080862d35ee"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/policy_executor_phased.py",
+        "sha256": "6e4a43bdc9c6925a9ece32c811eca65ce38f4515afff585f48ff9d3e9815990f"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/project_paths.py",
+        "sha256": "3dc318fd4f1e99ce78fd763e177912b44bf27bf5c3d6a4ede2b030c040f7549b"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/scripts/standard_pose.py",
+        "sha256": "00de59b02fbaa85786f7c0032605d37ecd7f803e82fc9abcc155b1435b6e7810"
+      }
+    ],
+    "E11": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/offline_validation/report_100_frames.json",
+        "sha256": "e98f1f3472d98ab2cf2e804134ad7d37176c31648ee0d55ff6b90ad9b6942549"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/offline_validation/actions_100_frames.csv",
+        "sha256": "4a8e64a5abc52f12228ca1e845048dfb1fddd470400999bed062a0e8d4d0d432"
+      }
+    ],
+    "E12": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/005000.json",
+        "sha256": "3647b6d1f4095b0a050a20da00976a5493737d846c5ae63773ccd5be1aa94db7"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/010000.json",
+        "sha256": "2c559c9b8d7d54592aaaa51da5dbadb221a9864d2dbfde7e033287061a3335b4"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/015000.json",
+        "sha256": "6ac7ff063510db4b4297de95b6ea87ee910de8b3baf8fa2fe3048c6aea0ddf8b"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/020000.json",
+        "sha256": "3fa01ba15338cd0be02e227d9fe0886c9530b53e2f1884bab68308fde3674efd"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/025000.json",
+        "sha256": "f2c69a02d919812b2d48e89505193c334c9a78c70a5e2fc6001d3ea9554ecb4d"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/030000.json",
+        "sha256": "25e10352a0cf22bb379d20a7cdc590250a08dc0b16afe3673ee42d31c3e0176a"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/035000.json",
+        "sha256": "5786ca2083d8f9b21e146be581589f09d16cfaea68f2331a673d016dd3a97b99"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/040000.json",
+        "sha256": "2a11b17b2475fc640147a08a753082d502e071e9f230d731dcdb41dc47f0d1d9"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/045000.json",
+        "sha256": "168aa71ca7ac9a5b7fa46b85cabf29b4d9671f0468da2a32d0d40d8cfb2271b7"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/050000.json",
+        "sha256": "ab1d882288be8a5856c9deab059b4a509b0d385f4c6b9bedfbbd3875ac0a7a36"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/055000.json",
+        "sha256": "b0a41c4e69771619247253964cb6f199fe1d004666786d9256700bf61146abba"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/060000.json",
+        "sha256": "125c3fc4ba97aa990f92689625f0116ddd81750361e2289975fec47194a64614"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/065000.json",
+        "sha256": "350999b5da2d46a35d2ab416282796b44d40082082d6b6d4034eb08b71507ae8"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/070000.json",
+        "sha256": "7d931c3b5c71a338802ce1e57e6c6a316f617e7b2a06e34f673035b3e36a040e"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/075000.json",
+        "sha256": "66d90a132caba727ad1ec7fa7321f34d94f19057698163c9b748708a4dcff5ec"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/evaluation/53ep_checkpoint_comparison/080000.json",
+        "sha256": "e6689062295605f23b5436f9a25f12001a0eb27d1e91afa7dcf48292dada33f8"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/offline_inference.py",
+        "sha256": "f5fc3e70e8f787981fa6aba48af09d38ba05c7ea9d13379a46025f4c951613f3"
+      }
+    ],
+    "E13": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/action_semantics.py",
+        "sha256": "1ea7d3dd19cae46ea83f8511a9b45485c11a221838366f7614f5032bdd72fbf9"
+      },
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_cube_clean_20ep_delta/delta_integrity_report.json",
+        "sha256": "e7058213f93036d37f7f254947519f257290e669b3377f7ea7549058889e470b"
+      }
+    ],
+    "E14": [
+      {
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/src/ur5-vla-dataset-recorder/tools/generate_pi0_73ep_a100_colab.py",
+        "sha256": "dbc0449ea20955f58ec0d29d194b74e88cf4ff605872b8799b5c30420fa68d77"
+      }
+    ]
+  }
+}

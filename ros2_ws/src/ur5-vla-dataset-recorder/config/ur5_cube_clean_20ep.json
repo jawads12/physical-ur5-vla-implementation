@@ -1,0 +1,20 @@
+{
+  "dataset_name": "ur5_cube_clean_20ep",
+  "repo_id": "local/ur5_cube_clean_20ep",
+  "task": "Pick up the orange cube and place it in the bowl",
+  "expected_source_episodes": 29,
+  "expected_selected_episodes": 20,
+  "expected_selected_frames": 32022,
+  "max_frame_interval_s": 0.2,
+  "excluded_episodes": {
+    "episode_20260821_014409": "multiple task attempts: four gripper transitions",
+    "episode_20260821_020621": "multiple task attempts and 18 timestamp gaps; maximum gap 18.999 seconds",
+    "episode_20260821_021830": "11 timestamp gaps; maximum gap 3.351 seconds",
+    "episode_20260822_023557": "multiple task attempts: four gripper transitions",
+    "episode_20260822_023942": "multiple task attempts: four gripper transitions",
+    "episode_20260822_030034": "multiple task attempts: four gripper transitions",
+    "episode_20260822_034925": "four timestamp gaps; maximum gap 5.200 seconds",
+    "episode_20260822_035620": "arm action discontinuity of 1.471315 radians",
+    "episode_20260822_035749": "eight timestamp gaps; maximum gap 4.551 seconds"
+  }
+}

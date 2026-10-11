@@ -1,0 +1,39 @@
+# ROS 2 build output
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+hardware_ws/build/
+hardware_ws/install/
+hardware_ws/log/
+
+# Large local artifacts (copied separately from source control)
+data/
+legacy/desktop_vla/lerobot/
+legacy/desktop_vla/berk/lerobot/
+legacy/desktop_vla/berk/lerobot_output*/
+legacy/desktop_vla/berk/outputs/
+legacy/desktop_vla/berk/smolvla_ur5_finetuned/
+legacy/desktop_vla/lerobot_output*/
+legacy/desktop_vla/smolvla_ur5_finetuned/
+legacy/vla_script_training/lerobot/
+legacy/vla_script_training/lerobot_output*/
+legacy/downloads_physical_ur5/datasets/
+legacy/downloads_physical_ur5/checkpoints/
+legacy/downloads_physical_ur5/deployment/downloaded_checkpoints/
+legacy/downloaded_models/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.zip
+
+# Python/editor output
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.python_deps/
+.venv/
+*.swp
+*.lock
+.~lock.*
