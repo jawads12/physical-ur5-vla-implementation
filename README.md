@@ -7,8 +7,11 @@ Central local repository for physical UR5 vision-language-action recording, conv
 - [Workspaces and hardware](#workspaces-and-hardware)
 - [Location and environment](#location-and-environment)
 - [Build and source](#build-and-source)
+- [UR5 physical arm installation and teleoperation](#ur5-physical-arm-installation-and-teleoperation)
+  - [Daily run: teleoperation and dataset recording, one step at a time](#daily-run-teleoperation-and-dataset-recording-one-step-at-a-time)
 - [Directory map](#directory-map)
 - [Current data and model](#current-data-and-model)
+- [Dataset conversion and validation](#dataset-conversion-and-validation)
 - [ROS package files](#ros-package-files)
 - [Standalone scripts](#standalone-scripts)
 - [Typical read-only checks](#typical-read-only-checks)
@@ -82,7 +85,7 @@ source "$UR5_VLA_ROOT/hardware_ws/install/setup.bash"
 source "$UR5_VLA_ROOT/ros2_ws/install/setup.bash"
 ```
 
-ROS 2 Humble, the UR robot driver, camera drivers, system Python 3.10, and the `pi0` Conda environment are system dependencies. The `pi0` environment's editable LeRobot 0.5.2 installation now points to `legacy/vla_script_training/lerobot` **inside this repository**. Conda itself remains at `/home/grasplab/miniconda3/bin/conda`. The external drive must remain mounted while using this setup. Fresh terminals also set `HF_HOME` to `data/huggingface_cache` and `HF_LEROBOT_HOME` to `data/hf_lerobot_cache`; authentication tokens were not copied.
+ROS 2 Humble, the UR robot driver, camera drivers, system Python 3.10, and the `pi0` Conda environment are system dependencies. The `pi0` environment's editable LeRobot 0.5.2 installation now points to `dump/vla_script_training/lerobot` **inside this repository**. Conda itself remains at `/home/grasplab/miniconda3/bin/conda`. The external drive must remain mounted while using this setup. Fresh terminals also set `HF_HOME` to `data/huggingface_cache` and `HF_LEROBOT_HOME` to `data/hf_lerobot_cache`; authentication tokens were not copied.
 
 Use `/usr/bin/python3` for ROS-facing standalone scripts; the Conda base
 `python3` may be a different Python version from ROS Humble's bindings.
@@ -103,6 +106,468 @@ source install/setup.bash
 
 Six hardware workspace packages and the recorder package built successfully from copied source on 2026-10-10. Build, install, and log directories are generated output excluded from Git.
 
+## UR5 physical arm installation and teleoperation
+
+### Installed components and workspace roles
+
+The physical platform uses **UR5 (`ur_type:=ur5`), ROS 2 Humble on Ubuntu
+22.04, and robot IP `10.0.1.38`**. Use system Python 3.10 for ROS commands.
+The following installation was inspected on 2026-10-11:
+
+| Component | Installed version or location | Role |
+| --- | --- | --- |
+| `ur_robot_driver`, `ur_moveit_config`, `ur_calibration` | ROS Debian packages 2.14.0 under `/opt/ros/humble` | Physical arm connection, trajectory controllers, MoveIt configuration, calibration extraction |
+| `moveit_servo` | ROS Debian package 2.5.9 | Converts teleoperation Twist commands into joint targets |
+| `joy` | ROS Debian package 3.3.0 | Logitech Extreme 3D Pro input |
+| `realsense2_camera` | ROS Debian package 4.58.3 | Base D435i and wrist D435 camera streams |
+| `hardware_ws` | Six source packages: `serial`, `robotiq_driver`, `robotiq_controllers`, `robotiq_description`, `robotiq_hardware_tests`, `ur5_isaac_simulation` | Serial Robotiq support and Isaac simulation assets |
+| `ros2_ws` | `ur5_vla_dataset_recorder` | Logitech mapper, guarded reset, synchronized recording, and policy tools |
+
+The UR arm driver is **not contained in `hardware_ws/src/`**. Its binary
+installation provides the physical arm stack. The current pneumatic gripper
+uses UR digital outputs through SetIO; the serial Robotiq launch files are for
+the separate compatible gripper setup. Isaac launch files start simulation
+components and are not the physical arm bring-up procedure.
+
+### Install dependencies on a new workstation
+
+First install Ubuntu 22.04 and ROS 2 Humble following the
+[official ROS installation instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html).
+The UR Humble driver supports binary installation through `ros-humble-ur`;
+see the [official Humble driver installation guide](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/blob/humble/ur_robot_driver/doc/installation/installation.rst).
+With the ROS apt repository configured, install the host dependencies:
+
+```bash
+sudo apt update
+sudo apt install \
+  ros-humble-ur ros-humble-moveit ros-humble-moveit-servo \
+  ros-humble-joy ros-humble-realsense2-camera \
+  ros-humble-cv-bridge ros-humble-ur-msgs ros-humble-ur-dashboard-msgs \
+  ros-humble-control-msgs ros-humble-controller-manager-msgs \
+  ros-humble-moveit-msgs ros-humble-trajectory-msgs \
+  python3-opencv python3-numpy python3-yaml \
+  python3-colcon-common-extensions python3-rosdep
+```
+
+If rosdep has not been initialized on that machine, run `sudo rosdep init`
+once, followed by `rosdep update`. Install workspace dependencies:
+
+```bash
+source /opt/ros/humble/setup.bash
+rosdep install --from-paths "$UR5_VLA_ROOT/hardware_ws/src" \
+  "$UR5_VLA_ROOT/ros2_ws/src" --ignore-src --rosdistro humble -y
+```
+
+Set `UR5_VLA_ROOT` using [Location and environment](#location-and-environment)
+first, then build and source both workspaces in the order shown in
+[Build and source](#build-and-source). The existing `hardware_ws/src/serial`
+supplies the serial dependency; no second checkout is needed. Isaac support
+additionally needs `ros-humble-tf-transformations`, which is missing from the
+current host and its package manifest; see the smoke-test limitations below.
+
+### Robot network, External Control, and calibration
+
+Connect the robot control box and PC over Ethernet. Configure a unique PC
+address on the robot's subnet, matching the actual pendant network settings;
+the PC address has not been recorded here. Check the chosen interface and
+reachability with `ip -4 addr` and `ping -c 3 10.0.1.38`.
+
+Install the External Control URCap appropriate for the robot's PolyScope
+version, reboot as directed, configure its remote host as the PC's Ethernet
+IP, and save a pendant program containing the External Control node. The
+installed driver provides
+`/opt/ros/humble/share/ur_robot_driver/resources/externalcontrol-1.0.5.urcap`.
+Use the [official Humble robot setup guide](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver/blob/humble/ur_robot_driver/doc/installation/robot_setup.rst)
+for the pendant procedure. The documented lab workflow starts the driver
+first and then plays this program on the pendant. The current pendant
+configuration and PolyScope version were not inspected during this review.
+
+Extract and retain this particular arm's factory calibration when setting up
+a new workstation. For example, choose a persistent configuration location:
+
+```bash
+mkdir -p "$UR5_VLA_ROOT/hardware_ws/config"
+ros2 launch ur_calibration calibration_correction.launch.py \
+  robot_ip:=10.0.1.38 \
+  target_filename:="$UR5_VLA_ROOT/hardware_ws/config/ur5_calibration.yaml"
+```
+
+Then supply `kinematics_params_file` with that file when launching the driver.
+No arm-specific extracted calibration was found in the repository during
+inspection; the Isaac `default_kinematics.yaml` is a simulation/default asset.
+The installed MoveIt launch uses the description package's default kinematics,
+so also configure a matching calibrated description for MoveIt if accurate
+Cartesian geometry is required; passing the driver argument alone does not
+update that separate launch.
+
+### Bring up the physical arm and MoveIt Servo
+
+Prepare every terminal using the environment/source commands above. Keep
+long-running launch processes in separate terminals. The following controller
+and teleoperation steps enable physical motion; use a clear swept path, low
+pendant speed, and an accessible emergency stop.
+
+```bash
+ros2 launch ur_robot_driver ur_control.launch.py \
+  ur_type:=ur5 robot_ip:=10.0.1.38 launch_rviz:=false
+```
+
+If the extracted calibration exists, append
+`kinematics_params_file:="$UR5_VLA_ROOT/hardware_ws/config/ur5_calibration.yaml"`.
+Start the saved External Control program on the pendant. In a second terminal:
+
+```bash
+ros2 launch ur_moveit_config ur_moveit.launch.py \
+  ur_type:=ur5 launch_rviz:=true launch_servo:=true
+```
+
+The installed launch explicitly supports `launch_servo`. Switch the arm from
+trajectory execution to continuous Servo control, then start Servo:
+
+```bash
+ros2 control switch_controllers \
+  --deactivate scaled_joint_trajectory_controller \
+  --activate forward_position_controller
+ros2 service call /servo_node/start_servo std_srvs/srv/Trigger "{}"
+ros2 control list_controllers
+ros2 topic echo /servo_node/status --once
+ros2 topic echo /joint_states --once
+```
+
+Confirm `forward_position_controller` is active, the trajectory controller is
+inactive, and Servo status is zero. The installed Servo configuration outputs
+joint positions on `/forward_position_controller/commands` and uses a 0.1 s
+incoming-command timeout. The command path is:
+
+```text
+Logitech → /joy → logitech_servo → /servo_node/delta_twist_cmds
+  → MoveIt Servo → /forward_position_controller/commands
+  → UR robot driver → physical UR5
+```
+
+### Cameras, joystick, and gripper
+
+Connect both RealSense cameras over USB 3. Launch each camera in a separate
+terminal using its serial number and the namespaces expected by the recorder:
+
+```bash
+# Base D435i
+ros2 launch realsense2_camera rs_launch.py \
+  serial_no:=_044322072365 camera_namespace:=base camera_name:=camera \
+  initial_reset:=true enable_color:=true enable_depth:=true \
+  align_depth.enable:=true rgb_camera.color_profile:=640x480x30 \
+  depth_module.depth_profile:=640x480x30
+
+# Wrist D435
+ros2 launch realsense2_camera rs_launch.py \
+  serial_no:=_827312073590 camera_namespace:=wrist camera_name:=camera \
+  initial_reset:=true enable_color:=true enable_depth:=true \
+  align_depth.enable:=true rgb_camera.color_profile:=640x480x30 \
+  depth_module.depth_profile:=640x480x30
+```
+
+Verify RGB and aligned depth on both cameras:
+
+```bash
+ros2 topic hz /base/camera/color/image_raw
+ros2 topic hz /wrist/camera/color/image_raw
+ros2 topic hz /base/camera/aligned_depth_to_color/image_raw
+ros2 topic hz /wrist/camera/aligned_depth_to_color/image_raw
+```
+
+Each `topic hz` command runs until interrupted. Enumerate the Logitech device,
+replace the placeholder with its actual device ID, and start input:
+
+```bash
+ros2 run joy joy_enumerate_devices
+ros2 run joy joy_node --ros-args \
+  -p device_id:=YOUR_LOGITECH_DEVICE_ID \
+  -p deadzone:=0.1 -p autorepeat_rate:=50.0
+```
+
+For a new-dataset episode, run the guarded reset **before starting the mapper**:
+
+```bash
+ros2 run ur5_vla_dataset_recorder prepare_dataset_start
+```
+
+This moves the arm to its standard pose, requests at most 20% speed scaling
+when needed, checks an interpolated path with MoveIt, then restores Servo.
+Wait for `DATASET START READY`, then start the mapper in another terminal:
+
+```bash
+ros2 run ur5_vla_dataset_recorder logitech_servo
+```
+
+| Logitech control | Behavior in the current mapper |
+| --- | --- |
+| Physical button 1 / trigger (`buttons[0]`) | Hold to enable arm Twist commands; release publishes zero Twist |
+| Stick forward/back and left/right | Base-frame X/Y translation |
+| Handle twist | Rotation about base-frame Z |
+| Physical buttons 5 / 6 | Z down / up while trigger is held |
+| Physical buttons 2 / 3 | Close / open pneumatic gripper through SetIO; these buttons do not require the arm trigger |
+| Physical button 7, held for two seconds with trigger released | Guarded standard-pose reset, then resume teleoperation |
+| Physical buttons 9 / 10 / 11 | Recorder start / discard / save-success when the recorder is running |
+
+The mapper requests up to 0.30 m/s linear and 0.50 rad/s angular speed in
+`base_link`; these are input command magnitudes, subject to Servo and robot
+limits. Gripper digital outputs use pin 0 for close and pin 1 for open.
+Operate the gripper once to initialize its estimated dataset state, then check
+`/gripper/state` and `/gripper/command` with `ros2 topic echo ... --once`.
+The convention is 0 = closed, 1 = open, with no measured finger/contact state.
+
+### Record demonstrations and return to trajectory control
+
+Start the 20 Hz recorder after the cameras, joint state, Servo status, arm
+targets, and gripper streams are ready:
+
+```bash
+ros2 launch ur5_vla_dataset_recorder recorder.launch.py
+ros2 param set /dataset_recorder task \
+  "Pick up the orange cube and place it in the bowl"
+ros2 service call /dataset_recorder/status std_srvs/srv/Trigger "{}"
+```
+
+Set the task to describe the actual demonstration. Use button 9 to start,
+button 11 to save success, or button 10 to discard. Raw recordings go to
+`data/dataset/staging/episodes/`. Recording observes motion and does not
+command the arm. The current recorder also requires aligned depth, fresh
+inputs, Servo status zero, and at least 20 GB free disk space.
+
+To return to MoveIt Plan and Execute, release the trigger and stop the mapper,
+then stop Servo and switch controllers:
+
+```bash
+ros2 service call /servo_node/stop_servo std_srvs/srv/Trigger "{}"
+ros2 control switch_controllers \
+  --deactivate forward_position_controller \
+  --activate scaled_joint_trajectory_controller
+ros2 control list_controllers
+```
+
+### Daily run: teleoperation and dataset recording, one step at a time
+
+Use this sequence after installation and workspace builds are complete. Each
+long-running process has its own terminal. Prepare every terminal with step 1.
+The reset and teleoperation commands physically move the arm: clear the swept
+path, use low pendant speed, and keep the emergency stop accessible. Keep
+standalone policy, replay, and `control_engine` processes stopped throughout.
+
+**1. Prepare every new terminal.**
+
+```bash
+conda deactivate
+export UR5_VLA_ROOT=/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation
+source /opt/ros/humble/setup.bash
+source "$UR5_VLA_ROOT/hardware_ws/install/setup.bash"
+source "$UR5_VLA_ROOT/ros2_ws/install/setup.bash"
+```
+
+If Conda remains active, repeat `conda deactivate`. If Conda was not active,
+continue with the source commands. ROS commands use system Python.
+
+**2. Check robot connectivity.**
+
+```bash
+ping -c 3 10.0.1.38
+```
+
+**3. Terminal 1 — start the physical UR5 driver.**
+
+```bash
+ros2 launch ur_robot_driver ur_control.launch.py \
+  ur_type:=ur5 robot_ip:=10.0.1.38 launch_rviz:=false
+```
+
+Apply the calibration argument described above if the extracted calibration
+file is available. Then start the saved External Control program on the teach
+pendant. Leave the driver running.
+
+**4. Terminal 2 — start MoveIt and Servo.**
+
+```bash
+ros2 launch ur_moveit_config ur_moveit.launch.py \
+  ur_type:=ur5 launch_rviz:=true launch_servo:=true
+```
+
+**5. Terminal 3 — activate the Servo controller and check readiness.**
+
+Run these commands one by one:
+
+```bash
+ros2 control switch_controllers \
+  --deactivate scaled_joint_trajectory_controller \
+  --activate forward_position_controller
+ros2 service call /servo_node/start_servo std_srvs/srv/Trigger "{}"
+ros2 control list_controllers
+ros2 topic echo /servo_node/status --once
+ros2 topic echo /joint_states --once
+```
+
+Require the forward position controller active, the scaled trajectory
+controller inactive, fresh joint state, and Servo status **0**.
+
+**6. Terminal 4 — start the base D435i camera.**
+
+```bash
+ros2 launch realsense2_camera rs_launch.py \
+  serial_no:=_044322072365 \
+  camera_namespace:=base camera_name:=camera \
+  initial_reset:=true enable_color:=true enable_depth:=true \
+  align_depth.enable:=true \
+  rgb_camera.color_profile:=640x480x30 \
+  depth_module.depth_profile:=640x480x30
+```
+
+**7. Terminal 5 — start the wrist D435 camera.**
+
+```bash
+ros2 launch realsense2_camera rs_launch.py \
+  serial_no:=_827312073590 \
+  camera_namespace:=wrist camera_name:=camera \
+  initial_reset:=true enable_color:=true enable_depth:=true \
+  align_depth.enable:=true \
+  rgb_camera.color_profile:=640x480x30 \
+  depth_module.depth_profile:=640x480x30
+```
+
+**8. Terminal 3 — verify all camera streams.**
+
+Run each command separately and press Ctrl+C after observing its rate:
+
+```bash
+ros2 topic hz /base/camera/color/image_raw
+ros2 topic hz /wrist/camera/color/image_raw
+ros2 topic hz /base/camera/aligned_depth_to_color/image_raw
+ros2 topic hz /wrist/camera/aligned_depth_to_color/image_raw
+```
+
+**9. Terminal 6 — identify and start the Logitech joystick.**
+
+```bash
+ros2 run joy joy_enumerate_devices
+```
+
+Replace `YOUR_LOGITECH_DEVICE_ID` with the reported numeric device ID:
+
+```bash
+ros2 run joy joy_node --ros-args \
+  -p device_id:=YOUR_LOGITECH_DEVICE_ID \
+  -p deadzone:=0.1 -p autorepeat_rate:=50.0
+```
+
+**10. Terminal 3 — move to the recording start pose.**
+
+Leave the teleoperation mapper stopped while this guarded reset runs:
+
+```bash
+ros2 run ur5_vla_dataset_recorder prepare_dataset_start
+```
+
+Wait for **`DATASET START READY`**. The command moves the arm and restores
+Servo after the reset; a failed readiness check must be resolved first.
+
+**11. Terminal 7 — start teleoperation.**
+
+```bash
+ros2 run ur5_vla_dataset_recorder logitech_servo
+```
+
+Hold physical button 1 (trigger) to move using the stick and handle twist.
+Buttons 5/6 move down/up while the trigger is held. Release the trigger to
+publish zero arm Twist. Buttons 2/3 close/open the gripper independently of the
+trigger. Operate the gripper once to initialize its recording state. The
+full mapping is in the control table above.
+
+**12. Terminal 3 — check gripper streams.**
+
+```bash
+ros2 topic echo /gripper/state --once
+ros2 topic echo /gripper/command --once
+```
+
+The values are 0 = closed and 1 = open; state is the acknowledged command
+estimate rather than a measured finger position.
+
+**13. Terminal 8 — start the dataset recorder.**
+
+```bash
+ros2 launch ur5_vla_dataset_recorder recorder.launch.py
+```
+
+**14. Terminal 3 — set the task to match the actual demonstration.**
+
+```bash
+ros2 param set /dataset_recorder task \
+  "Pick up the orange cube and place it in the bowl"
+```
+
+**15. Check recorder readiness before starting an episode.**
+
+```bash
+ros2 service call /dataset_recorder/status std_srvs/srv/Trigger "{}"
+```
+
+Resolve any missing/stale input or disk-space issue reported by the service.
+
+**16. Record each demonstration with the joystick.**
+
+1. Place the object and prepare the start pose.
+2. Press physical **button 9** to start recording.
+3. Hold the trigger and perform the task, using the gripper buttons as needed.
+4. Release the trigger after the demonstration.
+5. Press **button 11** to save a successful episode, or **button 10** to discard it.
+
+Before the next episode, release the trigger and hold **button 7 for two
+seconds** to run the guarded standard-pose reset through the mapper. Wait for
+completion before starting another recording. Finish or discard the current
+episode before resetting.
+
+**17. Terminal 3 — inspect saved episodes.**
+
+```bash
+ls -lah "$UR5_VLA_ROOT/data/dataset/staging/episodes/"
+```
+
+Review the saved demonstrations before converting an explicit selection;
+follow [Dataset conversion and validation](#dataset-conversion-and-validation).
+
+**18. Finish teleoperation and return to trajectory control if needed.**
+
+Release the trigger, finish or discard any active episode, and stop the mapper
+in terminal 7 with Ctrl+C. In terminal 3:
+
+```bash
+ros2 service call /servo_node/stop_servo std_srvs/srv/Trigger "{}"
+ros2 control switch_controllers \
+  --deactivate forward_position_controller \
+  --activate scaled_joint_trajectory_controller
+ros2 control list_controllers
+```
+
+The controller switch returns the arm to MoveIt Plan and Execute. When ending
+the session, stop the recorder, joystick input, cameras, MoveIt, and driver
+with Ctrl+C in their respective terminals; stop the driver last. Follow the
+lab procedure for ending the pendant program and powering down the robot.
+
+### Setup limits and troubleshooting
+
+If the driver cannot connect, check robot/PC Ethernet addressing, the URCap's
+PC host address, and that the External Control program is playing. If the
+arm does not respond to teleoperation, check `/joy`, controller activation,
+the Servo start-service response, and `/servo_node/status`. If recording is
+blocked, its status service reports readiness problems; check all four camera
+streams and initialize the gripper estimate. An `_rclpy_pybind11` error usually
+means a Conda Python environment was used instead of ROS's system Python.
+
+The current MoveIt scene does not model the table, bowl, cameras, or people;
+a successful collision query is not a check of the real swept path. The
+installation, local launch arguments, and mapper configuration were inspected
+for this chapter, but no physical bring-up or teleoperation was executed.
+Supervised hardware validation remains required. Keep standalone
+`scripts/control_engine*.py` and policy/replay publishers stopped during this
+Servo workflow: they form a separate control path and can compete with it.
+
 ## Directory map
 
 | Path from repository root | Contents |
@@ -117,10 +582,10 @@ Six hardware workspace packages and the recorder package built successfully from
 | `data/models/` | Trained checkpoints and evaluation results |
 | `data/huggingface_cache/` | Copied model/dataset Hub cache used by fresh terminals |
 | `data/hf_lerobot_cache/` | Copied LeRobot local dataset cache used by fresh terminals |
-| `legacy/desktop_vla/` | Earlier experiments, source code, simulation assets, and outputs |
-| `legacy/vla_script_training/` | Earlier LeRobot checkout, conversion/training scripts, and outputs |
-| `legacy/downloads_physical_ur5/` | Earlier downloaded training/deployment materials |
-| `legacy/downloaded_models/` | Downloaded checkpoints, including the 20 GB `Checkpoints/` archive |
+| `dump/desktop_vla/` | Earlier experiments, source code, simulation assets, and outputs |
+| `dump/vla_script_training/` | Earlier LeRobot checkout, conversion/training scripts, and outputs |
+| `dump/downloads_physical_ur5/` | Earlier downloaded training/deployment materials |
+| `dump/downloaded_models/` | Downloaded checkpoints, including the 20 GB `Checkpoints/` archive |
 
 See [Workspaces and hardware](#workspaces-and-hardware) for the role of each
 hardware workspace package.
@@ -208,6 +673,190 @@ all 1.4 million files individually.
 
 At the original migration, the main raw/converted data copy completed with **1,427,363 files** in both source and destination trees and an rsync dry run showing zero differences. The copied hardware source, later checkpoint archive, LeRobot cache, and Hugging Face Hub/datasets caches also showed zero differences. Migration-time size estimates were about 139 GB of project data, roughly another 32 GB of copied caches, and more than 110 GB of older experiments/checkpoints; these are historical estimates before the exports/evaluation cleanup. These large folders are ignored by Git: **a normal Git push does not upload datasets or model weights**.
 
+## Dataset conversion and validation
+
+### Scripts, environment, and data flow
+
+Conversion runs locally after recording and reviewing demonstrations:
+
+```text
+data/dataset/staging/episodes/<selected episodes>
+  → raw validation and full media decoding
+  → convert_lerobot.py (LeRobot dataset creation)
+  → data/dataset/lerobot/<new dataset name>
+  → validate_lerobot.py (converted dataset checks)
+  → training notebook for the chosen policy
+```
+
+| File relative to the repository root | Role |
+| --- | --- |
+| `ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/convert_lerobot.py` | Main raw-to-LeRobot converter; invoked as a Python module |
+| `ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/raw_dataset.py` | Raw metadata, timing, state/action, and media validation helpers |
+| `ros2_ws/src/ur5-vla-dataset-recorder/ur5_vla_dataset_recorder/validate_lerobot.py` | Loads the converted dataset using LeRobot and writes a validation report |
+| `docs/episode_audit_20261002/convert_reviewed_episodes.sh` | Wrapper for the dated 37-episode and combined 110-episode selections; runs conversion and validation |
+| `docs/episode_audit_20261002/accepted_new_episodes.txt`, `combined_episodes.txt` | Exact episode selections used by that wrapper |
+
+**`pi0` is the name of the local Conda environment**, not the model chosen by
+the converter. It has LeRobot 0.5.2 and the Python dependencies needed for
+conversion, video encoding, and validation. Its editable LeRobot installation
+points to `dump/vla_script_training/lerobot`. The resulting dataset can be used
+with SmolVLA or another compatible policy. ROS nodes use system Python;
+conversion uses this separate environment and does not command hardware.
+
+Prepare the source path and verify the installed environment:
+
+```bash
+export UR5_PACKAGE="$UR5_VLA_ROOT/ros2_ws/src/ur5-vla-dataset-recorder"
+export PYTHONPATH="$UR5_PACKAGE${PYTHONPATH:+:$PYTHONPATH}"
+cd "$UR5_PACKAGE"
+
+/home/grasplab/miniconda3/bin/conda run --no-capture-output -n pi0 \
+  python -c 'import sys, lerobot; import importlib.metadata as m; print(sys.executable); print(lerobot.__file__); print(m.version("lerobot"))'
+```
+
+Set `UR5_VLA_ROOT` as described in [Location and environment](#location-and-environment)
+before these commands. The absolute Conda executable avoids depending on shell
+activation. The converter source still writes the historical compatibility
+label `0.4.3 / dataset codebase v3.0` into conversion metadata; this label is
+distinct from the installed LeRobot version checked above.
+
+### Convert a new reviewed selection
+
+Choose a **new dataset name**, set the task to match the demonstration, and
+replace both example episode names with existing reviewed directory names.
+Use the same terminal prepared above:
+
+```bash
+UR5_DATASET_NAME=MY_NEW_DATASET
+UR5_TASK="Pick up the orange cube and place it in the bowl"
+UR5_EPISODES=(episode_YYYYMMDD_HHMMSS episode_YYYYMMDD_HHMMSS)
+
+/home/grasplab/miniconda3/bin/conda run --no-capture-output -n pi0 \
+  python -m ur5_vla_dataset_recorder.convert_lerobot \
+  --input-root "$UR5_VLA_ROOT/data/dataset/staging/episodes" \
+  --output-root "$UR5_VLA_ROOT/data/dataset/lerobot/$UR5_DATASET_NAME" \
+  --repo-id "local/$UR5_DATASET_NAME" \
+  --task "$UR5_TASK" \
+  --episodes "${UR5_EPISODES[@]}" \
+  --depth none --storage video --action-mode absolute
+```
+
+For a longer reviewed selection, set the same array from your own text file
+containing one episode directory name per line:
+
+```bash
+mapfile -t UR5_EPISODES < /absolute/path/to/reviewed_episode_names.txt
+```
+
+Load that list before running the conversion command. Explicit selection
+keeps rejected recordings out of the dataset. Omitting `--episodes` selects
+all finalized episode directories under the input root; the current raw
+folder includes recordings excluded from the reviewed 110-episode dataset,
+so omission is not equivalent to the reviewed selection.
+
+The converter validates **all selected episodes before creating the output**.
+It requires successful finalized recordings and checks metadata, canonical
+joint ordering, frame/timestamp consistency, finite state/action values,
+gripper conventions, and referenced media. It decodes all referenced RGB and
+depth media during preflight, even when depth is excluded from the output.
+Any raw validation failure stops conversion. Existing output directories are
+refused by default. `--overwrite` deletes an existing output directory, so use
+a new version name for routine conversions.
+
+### Conversion options and resulting schema
+
+| Option | Meaning |
+| --- | --- |
+| `--input-root` | Directory containing finalized raw episode folders |
+| `--output-root` | New converted dataset directory |
+| `--repo-id` | LeRobot dataset identifier, such as `local/MY_NEW_DATASET`; this command does not upload it to the Hub |
+| `--episodes` | Explicit episode directory names; omission selects all finalized episodes |
+| `--task` | Override the task for every selected episode; omission uses each episode's metadata task |
+| `--depth none` | Current RGB-only training workflow; source depth files remain intact |
+| `--depth meters` | Add float32 depth in metres and validity masks; requires suitable raw depth and metadata |
+| `--storage video` | Store base/wrist RGB as videos; `image` is the alternative |
+| `--action-mode absolute` | Six absolute joint-position targets in radians and an absolute binary gripper command |
+| `--action-mode delta` | Six same-frame differences `q_command - q_measured`; gripper remains absolute |
+| `--overwrite` | Replace an existing output by deleting it; not used in the commands above |
+
+The current schema expects 640×480 camera images and creates a 20 Hz dataset.
+`observation.state` contains six measured joints in canonical UR5 order plus
+the estimated gripper state. `action` contains the six arm targets or deltas
+plus the gripper command. The gripper convention is **0 = closed, 1 = open**.
+Exact raw episode timing is retained as `source_episode_time_s` alongside
+LeRobot's regular frame timestamps. The task is stored with each frame.
+Raw recordings are read without being changed.
+
+The output contains `meta/`, frame data under `data/`, and camera media under
+`videos/` for video storage. `meta/ur5_vla_conversion.json` records the source
+episode names, joint order, units, action semantics, gripper convention, depth
+mode, and storage choice. Keep the whole dataset directory together.
+
+### Validate the converted dataset
+
+After conversion succeeds, run the validator in the same prepared terminal:
+
+```bash
+/home/grasplab/miniconda3/bin/conda run --no-capture-output -n pi0 \
+  python -m ur5_vla_dataset_recorder.validate_lerobot \
+  --root "$UR5_VLA_ROOT/data/dataset/lerobot/$UR5_DATASET_NAME" \
+  --repo-id "local/$UR5_DATASET_NAME" \
+  --expected-episodes "${#UR5_EPISODES[@]}" \
+  --task "$UR5_TASK" \
+  --video-backend pyav \
+  --report "$UR5_VLA_ROOT/data/dataset/lerobot/$UR5_DATASET_NAME/validation_report.md"
+```
+
+Add `--expected-frames NUMBER` when the reviewed frame total is known. The
+validator scans every state/action row, checks seven-dimensional finite values
+and binary gripper actions, checks conversion semantics and optional expected
+counts/task, and requires close/open transitions in each episode. Delta
+datasets are also checked against a 0.012566 rad arm-delta envelope. It decodes
+both camera views at the beginning, middle, and end of each episode; converted
+video validation is sampled, rather than a full-frame decode. A passing run
+prints `PASS`; validation errors produce a nonzero exit and a report.
+
+### Existing reviewed 37- and 110-episode workflows
+
+The dated wrapper uses fixed selections and destinations:
+
+| Mode | Selection | Output dataset | Expected frames |
+| --- | --- | --- | --- |
+| `new` | 37 accepted October 1 episodes | `ur5_cube_oct01_37ep` | 88,497 |
+| `combined` | Previous 73 plus the accepted 37 | `ur5_cube_110ep_v3` | 285,204 |
+
+```bash
+# Show the wrapper's available modes.
+bash "$UR5_VLA_ROOT/docs/episode_audit_20261002/convert_reviewed_episodes.sh" --help
+
+# Convert and validate the reviewed 110-episode selection.
+bash "$UR5_VLA_ROOT/docs/episode_audit_20261002/convert_reviewed_episodes.sh" combined
+```
+
+Use `new` instead of `combined` for the fixed 37-episode selection. The
+110-episode output **already exists**, so `combined` currently refuses to
+overwrite it. These modes are historical selections, not automatic selection
+of newly recorded episodes. For another selection, use the explicit new-name
+command above. The combined selection retains a historical episode with
+multiple grasp/release transitions, as documented in the audit report.
+
+### Progress and troubleshooting
+
+`[preflight]` messages show raw validation and media decoding; `[convert]`
+messages show frame staging and video encoding; `[finalize]` marks metadata
+and statistics completion. Encoding can take time. A failed or interrupted
+conversion may leave a partial output directory: inspect it and keep it
+separate from valid datasets before retrying with a new output name.
+
+If imports fail, verify the `pi0` environment and `PYTHONPATH` above. If the
+output already exists, choose a new dataset name. If preflight fails, inspect
+the reported episode/media/timing error and revise the reviewed selection.
+If the converted validator fails, retain its report for diagnosis and do not
+use that output as a validated training dataset. Local conversion does not
+need the robot running. Package conversion notebooks provide a separate Colab
+route using cloud paths; archived `dump/` CSV converters use an older raw
+format and do not replace this `frames.jsonl` workflow.
+
 ## ROS package files
 
 The installed console commands are defined in `ros2_ws/src/ur5-vla-dataset-recorder/setup.py`. These modules live in its `ur5_vla_dataset_recorder/` directory:
@@ -225,7 +874,7 @@ The installed console commands are defined in `ros2_ws/src/ur5-vla-dataset-recor
 | `policy_live_executor.py`, `policy_episode_executor.py` | Live policy execution and bounded episode execution; these can command hardware |
 | `package_dataset.py`, `split_archive.py`, `install_checkpoint.py` | Dataset archive and checkpoint transport utilities |
 
-`launch/recorder.launch.py` loads `config/recorder.yaml`. The recorder config uses `data/dataset` relative to this repository, and the recorder resolves relative `output_root` values from the repository root. `test/` contains package checks. `tools/` contains notebook generators for the 30-, 20-, 53-, 73-, and 110-episode experiments, generic conversion-notebook generators, and a historical training progress monitor. That monitor uses the copied `legacy/downloaded_models/Checkpoints/` path and an old process ID; it is not a live monitor for a new run.
+`launch/recorder.launch.py` loads `config/recorder.yaml`. The recorder config uses `data/dataset` relative to this repository, and the recorder resolves relative `output_root` values from the repository root. `test/` contains package checks. `tools/` contains notebook generators for the 30-, 20-, 53-, 73-, and 110-episode experiments, generic conversion-notebook generators, and a historical training progress monitor. That monitor uses the copied `dump/downloaded_models/Checkpoints/` path and an old process ID; it is not a live monitor for a new run.
 
 The package's `notebooks/` contains conversion notebooks and SmolVLA/π0/π0.5 training notebooks for named dataset versions. Colab notebooks intentionally use `/content` and Google Drive paths because they execute in Colab. `notebooks/` at repository root contains four later 110-episode training and π0.5 troubleshooting notebooks. All 17 package/root notebook files parsed as JSON; cloud training was not rerun during this migration.
 
@@ -313,7 +962,7 @@ Recording is launched with `ros2 launch ur5_vla_dataset_recorder recorder.launch
 
 ## Historical material and known limits
 
-`legacy/` preserves earlier simulation, bottle, lemon, and cube experiments. The archived `legacy/vla_script_training/convert_data*.py` and `conversion_data_cube_twoCam.py` scripts now look under `legacy/raw/dataset_raw_cube` or `legacy/raw/dataset_raw_bottle` and write under `data/hf_lerobot_cache`; they refuse to overwrite an existing converted dataset. Those earlier CSV raw directories were not present on this workstation, so the scripts cannot complete until the matching inputs are supplied. The current `frames.jsonl` raw dataset has a different schema. Archived training logs and notebook outputs may include old machine paths; they are historical observations, not current configuration. The dated package handoff document has the same status.
+`dump/` preserves earlier simulation, bottle, lemon, and cube experiments. The archived `dump/vla_script_training/convert_data*.py` and `conversion_data_cube_twoCam.py` scripts now look under `dump/raw/dataset_raw_cube` or `dump/raw/dataset_raw_bottle` and write under `data/hf_lerobot_cache`; they refuse to overwrite an existing converted dataset. Those earlier CSV raw directories were not present on this workstation, so the scripts cannot complete until the matching inputs are supplied. The current `frames.jsonl` raw dataset has a different schema. Archived training logs and notebook outputs may include old machine paths; they are historical observations, not current configuration. The dated package handoff document has the same status.
 
 ROS hardware drivers, Conda, CUDA, Google Drive, and the physical arm remain external dependencies. A one-frame GPU inference completed from the copied checkpoint and dataset. That validates local model loading and an offline prediction; it does **not** establish physical task success or certify live motion safety. No live control process was started by this migration.
 

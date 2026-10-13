@@ -3,9 +3,9 @@
 convert_data_cube_2cam.py — Convert dataset_raw_cube into LeRobot format with TWO cameras.
 
 Reads:
-    legacy/raw/dataset_raw_cube/episode_*/data.csv
-    legacy/raw/dataset_raw_cube/episode_*/rgb/
-    legacy/raw/dataset_raw_cube/episode_*/rgb_up/
+    dump/raw/dataset_raw_cube/episode_*/data.csv
+    dump/raw/dataset_raw_cube/episode_*/rgb/
+    dump/raw/dataset_raw_cube/episode_*/rgb_up/
 
 Writes:
     local/ur5_cube_2cam
@@ -20,7 +20,7 @@ from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-RAW_DATASET_PATH = PROJECT_ROOT / "legacy/raw/dataset_raw_cube"
+RAW_DATASET_PATH = PROJECT_ROOT / "dump/raw/dataset_raw_cube"
 
 REPO_ID = "local/ur5_cube_2cam"
 ROBOT_TYPE = "ur5_isaac"

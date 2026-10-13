@@ -136,7 +136,7 @@ def place_model_on_gpu(policy, num_gpus: int, logger):
 # Load model
 # ============================================================
 def patch_checkpoint_config(checkpoint_path: str, logger):
-    """Automatically removes legacy/invalid keys from config.json to prevent DecodingErrors."""
+    """Automatically removes dump/invalid keys from config.json to prevent DecodingErrors."""
     config_path = os.path.join(checkpoint_path, "config.json")
     if not os.path.exists(config_path):
         return

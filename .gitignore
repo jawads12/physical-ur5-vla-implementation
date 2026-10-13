@@ -8,19 +8,19 @@ hardware_ws/log/
 
 # Large local artifacts (copied separately from source control)
 data/
-legacy/desktop_vla/lerobot/
-legacy/desktop_vla/berk/lerobot/
-legacy/desktop_vla/berk/lerobot_output*/
-legacy/desktop_vla/berk/outputs/
-legacy/desktop_vla/berk/smolvla_ur5_finetuned/
-legacy/desktop_vla/lerobot_output*/
-legacy/desktop_vla/smolvla_ur5_finetuned/
-legacy/vla_script_training/lerobot/
-legacy/vla_script_training/lerobot_output*/
-legacy/downloads_physical_ur5/datasets/
-legacy/downloads_physical_ur5/checkpoints/
-legacy/downloads_physical_ur5/deployment/downloaded_checkpoints/
-legacy/downloaded_models/
+dump/desktop_vla/lerobot/
+dump/desktop_vla/berk/lerobot/
+dump/desktop_vla/berk/lerobot_output*/
+dump/desktop_vla/berk/outputs/
+dump/desktop_vla/berk/smolvla_ur5_finetuned/
+dump/desktop_vla/lerobot_output*/
+dump/desktop_vla/smolvla_ur5_finetuned/
+dump/vla_script_training/lerobot/
+dump/vla_script_training/lerobot_output*/
+dump/downloads_physical_ur5/datasets/
+dump/downloads_physical_ur5/checkpoints/
+dump/downloads_physical_ur5/deployment/downloaded_checkpoints/
+dump/downloaded_models/
 *.safetensors
 *.pt
 *.pth

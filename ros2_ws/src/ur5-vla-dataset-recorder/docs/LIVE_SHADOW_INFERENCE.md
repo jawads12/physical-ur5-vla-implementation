@@ -15,7 +15,7 @@ This procedure runs the trained SmolVLA checkpoint on current robot observations
 
 ```text
 Checkpoint:
-/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/pretrained_model
+/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260823T063551Z-1-001/pretrained_model
 
 Dataset:
 /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_orange_cube_v1
@@ -46,7 +46,7 @@ cd /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-impleme
 
 conda run --no-capture-output -n pi0 \
   python -m ur5_vla_dataset_recorder.policy_inference_server \
-  --checkpoint /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/pretrained_model \
+  --checkpoint /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260823T063551Z-1-001/pretrained_model \
   --host 127.0.0.1 \
   --port 8765 \
   --device cuda
@@ -79,7 +79,7 @@ source /opt/ros/humble/setup.bash
 source /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/ros2_ws/install/setup.bash
 
 ros2 run ur5_vla_dataset_recorder policy_executor \
-  --checkpoint /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/pretrained_model \
+  --checkpoint /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260823T063551Z-1-001/pretrained_model \
   --dataset-root /media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/data/ur5_vla_dataset/lerobot/ur5_orange_cube_v1 \
   --repo-id local/ur5_orange_cube_v1 \
   --task "Pick up the orange cube and place it in the tray" \

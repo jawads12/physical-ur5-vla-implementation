@@ -12,7 +12,7 @@ from pathlib import Path
 PID = 973789
 TOTAL_STEPS = 20_000
 MEASURED_STEPS_PER_SECOND = 1.61
-CHECKPOINT_ROOT = Path(__file__).resolve().parents[4] / "legacy/downloaded_models/Checkpoints/train_clean20_delta_20k/checkpoints"
+CHECKPOINT_ROOT = Path(__file__).resolve().parents[4] / "dump/downloaded_models/Checkpoints/train_clean20_delta_20k/checkpoints"
 
 
 def command(*args: str) -> str:

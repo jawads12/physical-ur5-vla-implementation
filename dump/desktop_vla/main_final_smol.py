@@ -240,7 +240,7 @@ def _remove_keys_recursive(obj, keys_to_remove):
 
 def patch_checkpoint_config(checkpoint_path: str, logger):
     """
-    Automatically removes legacy/invalid keys from config.json to prevent
+    Automatically removes dump/invalid keys from config.json to prevent
     draccus DecodingError before SmolVLAPolicy.from_pretrained().
 
     The current error is:

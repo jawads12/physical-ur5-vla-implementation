@@ -20,8 +20,8 @@ FIG.mkdir(exist_ok=True)
 REPO = PROJECT / 'ros2_ws/src/ur5-vla-dataset-recorder'
 DATA = PROJECT / 'data/dataset'
 MODELS = PROJECT / 'data/models'
-OLD = PROJECT / 'legacy/downloaded_models/drive-download-20260823T063551Z-1-001'
-MODEL = PROJECT / 'legacy/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model'
+OLD = PROJECT / 'dump/downloaded_models/drive-download-20260823T063551Z-1-001'
+MODEL = PROJECT / 'dump/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model'
 
 STYLE = '''
 graph [bgcolor="white", pad="0.25", nodesep="0.3", ranksep="0.45", dpi=180];

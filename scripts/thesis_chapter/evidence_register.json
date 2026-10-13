@@ -113,11 +113,11 @@
     ],
     "E8": [
       {
-        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model/train_config.json",
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model/train_config.json",
         "sha256": "2e909b8e8ee65ee6737b9d30ebe4c7c6031105748f893b8e152067946f34f9b3"
       },
       {
-        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model/config.json",
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260902T150120Z-1-001/ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps/pretrained_model/config.json",
         "sha256": "fc53cf9ab7ca2f50484b50bf2ab12fec00bdaa2a8349d8d58e4fb72f4f41de6e"
       }
     ],
@@ -163,11 +163,11 @@
     ],
     "E11": [
       {
-        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/offline_validation/report_100_frames.json",
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260823T063551Z-1-001/offline_validation/report_100_frames.json",
         "sha256": "e98f1f3472d98ab2cf2e804134ad7d37176c31648ee0d55ff6b90ad9b6942549"
       },
       {
-        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/legacy/downloaded_models/drive-download-20260823T063551Z-1-001/offline_validation/actions_100_frames.csv",
+        "path": "/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation/dump/downloaded_models/drive-download-20260823T063551Z-1-001/offline_validation/actions_100_frames.csv",
         "sha256": "4a8e64a5abc52f12228ca1e845048dfb1fddd470400999bed062a0e8d4d0d432"
       }
     ],

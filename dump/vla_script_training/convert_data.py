@@ -2,7 +2,7 @@
 """
 convert_data.py — Convert dataset_raw_bottle into LeRobot v2.1 HuggingFace format.
 
-Reads:  legacy/raw/dataset_raw_bottle/episode_*/data.csv + rgb/
+Reads:  dump/raw/dataset_raw_bottle/episode_*/data.csv + rgb/
 Writes: data/hf_lerobot_cache/local/ur5 in this repository.
 
 Usage:
@@ -20,7 +20,7 @@ from lerobot.datasets.lerobot_dataset import LeRobotDataset
 # Configuration — edit these if your paths or task change
 # ═══════════════════════════════════════════════════════════════
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-RAW_DATASET_PATH = PROJECT_ROOT / "legacy/raw/dataset_raw_bottle"
+RAW_DATASET_PATH = PROJECT_ROOT / "dump/raw/dataset_raw_bottle"
 REPO_ID          = "local/ur5"
 ROBOT_TYPE       = "ur5_isaac"
 FPS              = 20
