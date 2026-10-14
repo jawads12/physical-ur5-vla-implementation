@@ -14,7 +14,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.qos import DurabilityPolicy, QoSProfile, ReliabilityPolicy
 from sensor_msgs.msg import JointState
-from std_msgs.msg import Float64MultiArray
+from std_msgs.msg import Float64, Float64MultiArray
 from std_srvs.srv import Trigger
 from ur_msgs.srv import SetIO
 
@@ -73,6 +73,13 @@ class ControlEngine(Node):
         )
         self.last_gripper = None
         self.gripper_busy = False
+        self.confirmed_gripper = None
+        self.gripper_state_publisher = self.create_publisher(
+            Float64, "/control_engine/gripper_state",
+            QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE,
+                       durability=DurabilityPolicy.TRANSIENT_LOCAL),
+        )
+        self.create_timer(0.05, self.publish_gripper_confirmation)
         self.create_timer(1.0 / OUTPUT_HZ, self.publish_smoothed_arm)
         self.create_timer(1.0, self.ensure_servo_stopped)
         mode = "DRY RUN" if dry_run else "LIVE"
@@ -197,6 +204,15 @@ class ControlEngine(Node):
         )
         self.send_io(writes, 0, value)
 
+    def publish_gripper_confirmation(self):
+        # This is confirmed command history, never measured finger position.
+        # Do not publish a guessed initial state before a successful IO pair.
+        if self.confirmed_gripper is None:
+            return
+        message = Float64()
+        message.data = self.confirmed_gripper
+        self.gripper_state_publisher.publish(message)
+
     def send_io(self, writes, index, gripper_value):
         pin, state = writes[index]
         request = SetIO.Request()
@@ -217,6 +233,8 @@ class ControlEngine(Node):
             if index == 0:
                 self.send_io(writes, 1, gripper_value)
                 return
+            self.confirmed_gripper = float(gripper_value)
+            self.publish_gripper_confirmation()
             state = "OPEN" if gripper_value == 1.0 else "CLOSED"
             self.get_logger().info(f"Gripper changed to {state}")
         except Exception as error:

@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT / "ros2_ws"
 PACKAGE = WORKSPACE / "src" / "ur5-vla-dataset-recorder"
 DATA = ROOT / "data" / "dataset"
+MODELS = ROOT / "data" / "models"
 DOWNLOADED_MODELS = ROOT / "dump" / "downloaded_models"
 HF_CACHE = ROOT / "data" / "huggingface_cache"
 LEROBOT_CACHE = ROOT / "data" / "hf_lerobot_cache"

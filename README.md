@@ -355,16 +355,46 @@ standalone policy, replay, and `control_engine` processes stopped throughout.
 
 **1. Prepare every new terminal.**
 
+Use the workspaces inside this repository:
+
+```text
+physical-ur5-vla-implementation/
+├── hardware_ws/install/   # This repository's hardware packages
+└── ros2_ws/install/       # This repository's teleop and recorder package
+```
+
+Start from a fresh terminal. Source the system ROS installation first, then
+the two repository overlays explicitly with `local_setup.bash`:
+
 ```bash
 conda deactivate
 export UR5_VLA_ROOT=/media/grasplab/ed18b0ca-2841-4109-a97f-532234a9abb5/physical-ur5-vla-implementation
 source /opt/ros/humble/setup.bash
-source "$UR5_VLA_ROOT/hardware_ws/install/setup.bash"
-source "$UR5_VLA_ROOT/ros2_ws/install/setup.bash"
+source "$UR5_VLA_ROOT/hardware_ws/install/local_setup.bash"
+source "$UR5_VLA_ROOT/ros2_ws/install/local_setup.bash"
 ```
 
 If Conda remains active, repeat `conda deactivate`. If Conda was not active,
 continue with the source commands. ROS commands use system Python.
+
+Verify the selected packages before starting hardware:
+
+```bash
+ros2 pkg prefix ur5_vla_dataset_recorder
+ros2 pkg prefix robotiq_driver
+ros2 pkg prefix ur_robot_driver
+ros2 pkg prefix ur_moveit_config
+/usr/bin/python3 -c 'import ur5_vla_dataset_recorder as p; print(p.__file__)'
+```
+
+The recorder prefix must be
+`$UR5_VLA_ROOT/ros2_ws/install/ur5_vla_dataset_recorder`, and the Robotiq
+prefix must be `$UR5_VLA_ROOT/hardware_ws/install/robotiq_driver`.
+The recorder Python module must also resolve inside this repository; a
+`ros2_ws/build/` path is normal for its symlink installation. The UR arm driver
+and MoveIt are installed under `/opt/ros/humble`. These resolutions were
+verified in a clean shell on 2026-10-13. If a package resolves from an older
+workspace, stop and correct the terminal environment before proceeding.
 
 **2. Check robot connectivity.**
 
@@ -940,7 +970,9 @@ control engine.
 | `control_engine.py` | Smooths abstract commands and publishes arm/gripper commands; **physical motion** unless in dry-run mode |
 | `control_engine_phased.py` | Phase-aware control-engine variant; **physical motion** unless in dry-run mode |
 | `policy_executor.py` | Starts the copied 110-episode SmolVLA server and publishes 7D actions; **physical motion** |
-| `policy_executor_phased.py` | Earlier 73-episode phase-gated executor; **physical motion** outside shadow mode |
+| `trajectory_offset.py` | Imported helper for continuous Cartesian translation of policy arm targets; uses the MoveIt robot description, local kinematics, and MoveIt path checks |
+| `grasp_offset.py` | Shared offset validation/planning and the earlier one-grasp intervention; imported by the executor, not run separately |
+| `policy_executor_phased.py` | Phase-gated executor using the 110-episode checkpoint; **physical motion** outside shadow mode |
 | `episode_executor.py` | Replays saved episode actions to the abstraction topic; **physical motion** |
 | `standard_pose.py` | Standalone standard-pose helper that publishes controller targets; **physical motion** |
 | `test_110ep_model.sh` | `offline`, `server`, and read-only `shadow` model checks using this repository's paths |
@@ -948,6 +980,38 @@ control engine.
 | `thesis_chapter/` | Duplicate snapshot from initial copy; use `docs/thesis_chapter/` as canonical |
 
 The copied live scripts import the ROS package from this repository's source tree before another installation can be chosen. Their model and data constants resolve under this repository. The original standalone scripts outside this repository were not edited.
+
+### Continuous offset experiment
+
+The measured forward direction is approximately +X in the robot's `base`
+frame. The experimental calibration file currently specifies **0.5 mm** in
+that direction. To translate the entire policy trajectory, use this executor
+command in a prepared ROS terminal, with the control engine in its separate
+terminal:
+
+```bash
+cd "$UR5_VLA_ROOT/scripts"
+/usr/bin/python3 policy_executor.py \
+  --grasp-offset-file "$UR5_VLA_ROOT/data/models/evaluation/codex test analysis/offset_calibration.json" \
+  --offset-mode continuous
+```
+
+This mode translates every arm target during approach, grasp, carry, and
+placement, preserving its orientation and gripper value. It blends chunks
+before translation so the offset is applied once per target. It uses the
+MoveIt robot model to solve each translated pose and checks the interpolated
+joint path against the current planning scene before queuing the chunk.
+Planning failure latches a fault and clears queued actions. The scene's
+unmodelled table/objects and the standalone engine's existing limitations
+still apply; this is an experimental action correction, not camera calibration.
+
+`--offset-mode grasp` selects the earlier correction immediately before the
+first close. Omitting `--grasp-offset-file` disables both modes. The file is
+loaded at startup: stop and safely reset before restarting to change modes or
+offset size. Do not restart an executor while its startup commands could
+release a held object. The continuous mode passed a read-only 50-target
+planning preview and geometry/queue regression checks; physical task success
+with this mode has not yet been measured.
 
 ## Typical read-only checks
 

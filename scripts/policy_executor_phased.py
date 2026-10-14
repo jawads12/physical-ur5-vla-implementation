@@ -22,7 +22,7 @@ from collections import deque
 from enum import Enum
 from pathlib import Path
 
-from project_paths import DATA, DOWNLOADED_MODELS, PACKAGE, inference_environment
+from project_paths import DATA, MODELS, PACKAGE, inference_environment
 
 sys.path.insert(0, str(PACKAGE))
 
@@ -40,8 +40,9 @@ from ur5_vla_dataset_recorder.shadow_protocol import request_prediction
 
 
 MODEL_PATH = Path(
-    DOWNLOADED_MODELS / "drive-download-20260902T150120Z-1-001" /
-    "ur5_cube_clean_73ep_v2_smolvla_a100_b96_16500_steps" / "pretrained_model"
+    MODELS / "checkpoints" /
+    "ur5_cube_110ep_v3_smolvla_a100_b128_18000_steps_20261003_180950" /
+    "pretrained_model"
 )
 RAW_EPISODES = DATA / "staging" / "episodes"
 REPOSITORY = PACKAGE
